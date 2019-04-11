@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="笔记,C++,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="翁凯老师C++课的笔记，强烈安利！（网易云课堂）">
-<meta name="keywords" content="笔记,C++">
+<meta name="description" content="本题要求实现一个函数，将两个链表表示的递增整数序列合并为一个非递减的整数序列。 函数接口定义：List Merge( List L1, List L2 );其中List结构定义如下： typedef struct Node PtrToNode;struct Node {    ElementType Data; / 存储结点数据 /    PtrToNode   Next; / 指向下一个结点的指">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++(翁凯）Note">
-<meta property="og:url" content="http://JuneLikesYogurt.github.io/2019/03/26/C++（翁凯）Note/index.html">
+<meta property="og:title" content="两个有序链表序列的合并">
+<meta property="og:url" content="http://JuneLikesYogurt.github.io/2019/04/10/两个有序链表序列的合并/index.html">
 <meta property="og:site_name" content="June的博客">
-<meta property="og:description" content="翁凯老师C++课的笔记，强烈安利！（网易云课堂）">
+<meta property="og:description" content="本题要求实现一个函数，将两个链表表示的递增整数序列合并为一个非递减的整数序列。 函数接口定义：List Merge( List L1, List L2 );其中List结构定义如下： typedef struct Node PtrToNode;struct Node {    ElementType Data; / 存储结点数据 /    PtrToNode   Next; / 指向下一个结点的指">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-10T12:59:48.135Z">
+<meta property="og:updated_time" content="2019-04-10T13:03:36.168Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++(翁凯）Note">
-<meta name="twitter:description" content="翁凯老师C++课的笔记，强烈安利！（网易云课堂）">
+<meta name="twitter:title" content="两个有序链表序列的合并">
+<meta name="twitter:description" content="本题要求实现一个函数，将两个链表表示的递增整数序列合并为一个非递减的整数序列。 函数接口定义：List Merge( List L1, List L2 );其中List结构定义如下： typedef struct Node PtrToNode;struct Node {    ElementType Data; / 存储结点数据 /    PtrToNode   Next; / 指向下一个结点的指">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://JuneLikesYogurt.github.io/2019/03/26/C++（翁凯）Note/">
+  <link rel="canonical" href="http://JuneLikesYogurt.github.io/2019/04/10/两个有序链表序列的合并/">
 
 
 
 
 
-  <title>C++(翁凯）Note | June的博客</title>
+  <title>两个有序链表序列的合并 | June的博客</title>
   
 
 
@@ -253,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://JuneLikesYogurt.github.ioJuneLikesYogurt.github.ios/2019/03/26/C++（翁凯）Note/">
+    <link itemprop="mainEntityOfPage" href="http://JuneLikesYogurt.github.ioJuneLikesYogurt.github.ios/2019/04/10/两个有序链表序列的合并/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="June">
@@ -270,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C++(翁凯）Note</h1>
+          <h1 class="post-title" itemprop="name headline">两个有序链表序列的合并</h1>
         
 
         <div class="post-meta">
@@ -282,8 +281,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-26T14:51:35+08:00">
-                2019-03-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-10T21:03:08+08:00">
+                2019-04-10
               </time>
             
 
@@ -292,28 +291,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="JuneLikesYogurt.github.ios/categories/Notes/" itemprop="url" rel="index">
-                    <span itemprop="name">Notes</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -347,31 +324,17 @@
       
 
       
-        <p>翁凯老师C++课的笔记，强烈安利！（网易云课堂）<br><a id="more"></a></p>
-<h3 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h3><ol>
-<li>only <strong>declarations</strong> are allowed to be in .h(.h里放声明，不放定义)<ol>
-<li>extern variables</li>
-<li>functions prototypes</li>
-<li>class/struct declaration</li>
-</ol>
-</li>
-<li><strong>#include</strong><ol>
-<li>#include’xx’: first search in the current directory,then the directories declared somewhere</li>
-<li>#include&lt;xx.h&gt;:   search int the specified directories(系统头文件目录,linux下/usr/include/)</li>
-<li>#include<xx>: same as #include&lt;xx.h&gt;</xx></li>
-</ol>
-</li>
-<li><p>Standard header file structure(标准头文件结构)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#ifndef HEADER_FLAG  </span><br><span class="line">#define HEADER_FLAG  </span><br><span class="line">//Type declaration here  </span><br><span class="line">#endif //HEADER_FLAG</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Tips for header</p>
-<ol>
-<li>One class declaration per header file</li>
-<li>Associated with one source file in the same prefix of file name(一个头文件不能被include两次)</li>
-<li>The contents of a header file is surrrounded with #ifndef #define #endif</li>
-</ol>
-</li>
-</ol>
+        <p>本题要求实现一个函数，将两个链表表示的递增整数序列合并为一个非递减的整数序列。</p>
+<p>函数接口定义：<br>List Merge( List L1, List L2 );<br>其中List结构定义如下：</p>
+<p>typedef struct Node <em>PtrToNode;<br>struct Node {<br>    ElementType Data; /</em> 存储结点数据 <em>/<br>    PtrToNode   Next; /</em> 指向下一个结点的指针 <em>/<br>};<br>typedef PtrToNode List; /</em> 定义单链表类型 */<br>L1和L2是给定的带头结点的单链表，其结点存储的数据是递增有序的；函数Merge要将L1和L2合并为一个非递减的整数序列。应直接使用原序列中的结点，返回归并后的带头结点的链表头指针。</p>
+<p>裁判测试程序样例：</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#include &lt;stdlib.h&gt;</p>
+<p>typedef int ElementType;<br>typedef struct Node *PtrToNode;<br>struct Node {<br>    ElementType Data;<br>    PtrToNode   Next;<br>};<br>typedef PtrToNode List;</p>
+<p>List Read(); /<em> 细节在此不表 </em>/<br>void Print( List L ); /<em> 细节在此不表；空链表将输出NULL </em>/</p>
+<p>List Merge( List L1, List L2 );</p>
+<p>int main()<br>{<br>    List L1, L2, L;<br>    L1 = Read();<br>    L2 = Read();<br>    L = Merge(L1, L2);<br>    Print(L);<br>    Print(L1);<br>    Print(L2);<br>    return 0;<br>}</p>
+<p>/<em> 你的代码将被嵌在这里 </em>/<br>输入样例：<br>3<br>1 3 5<br>5<br>2 4 6 8 10<br>输出样例：<br>1 2 3 4 5 6 8 10<br>NULL<br>NULL</p>
 
       
     </div>
@@ -387,14 +350,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="JuneLikesYogurt.github.ios/tags/笔记/" rel="tag"># 笔记</a>
-          
-            <a href="JuneLikesYogurt.github.ios/tags/C/" rel="tag"># C++</a>
-          
-        </div>
-      
 
       
       
@@ -404,8 +359,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="JuneLikesYogurt.github.ios/2019/02/28/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="JuneLikesYogurt.github.ios/2019/04/10/PopSequence/" rel="next" title="PopSequence">
+                <i class="fa fa-chevron-left"></i> PopSequence
               </a>
             
           </div>
@@ -414,8 +369,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="JuneLikesYogurt.github.ios/2019/03/26/MongoDB相关/" rel="prev" title="MongoDB相关">
-                MongoDB相关 <i class="fa fa-chevron-right"></i>
+              <a href="JuneLikesYogurt.github.ios/2019/04/10/树的同构/" rel="prev" title="树的同构">
+                树的同构 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -468,17 +423,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -540,22 +486,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#头文件"><span class="nav-number">1.</span> <span class="nav-text">头文件</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
