@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="实验一  简单的C语言词法分析器的实现实验目的：设计、编制并调试一个简单的c语言词法分析程序，加深对词法分析原理的理解   实验要求： 对单词的构词规则有明确的定义； 编写的分析程序能够正确识别源程序中的单词符号； 识别出的单词以（单词符号，种别码）的形式保存在符号表中； 词法分析中源程序的输入以.c格式，分析后的符号表，将二元组保存在.txt文件中。    实验分析： 待分析的简单的词法（1）">
+<meta name="description" content="实验一  简单的C语言词法分析器的实现实验目的：设计、编制并调试一个简单的c语言词法分析程序，加深对词法分析原理的理解   实验要求： 对单词的构词规则有明确的定义； 编写的分析程序能够正确识别源程序中的单词符号； 识别出的单词以（单词符号，种别码）的形式保存在符号表中； 词法分析中源程序的输入以.c格式，分析后的符号表，将二元组保存在.txt文件中。    实验分析： 待分析的简单的词法   关">
 <meta name="keywords" content="C,编译原理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C语言词法分析器">
 <meta property="og:url" content="http://yoursite.com/2019/04/15/C语言词法分析器/index.html">
 <meta property="og:site_name" content="June的博客">
-<meta property="og:description" content="实验一  简单的C语言词法分析器的实现实验目的：设计、编制并调试一个简单的c语言词法分析程序，加深对词法分析原理的理解   实验要求： 对单词的构词规则有明确的定义； 编写的分析程序能够正确识别源程序中的单词符号； 识别出的单词以（单词符号，种别码）的形式保存在符号表中； 词法分析中源程序的输入以.c格式，分析后的符号表，将二元组保存在.txt文件中。    实验分析： 待分析的简单的词法（1）">
+<meta property="og:description" content="实验一  简单的C语言词法分析器的实现实验目的：设计、编制并调试一个简单的c语言词法分析程序，加深对词法分析原理的理解   实验要求： 对单词的构词规则有明确的定义； 编写的分析程序能够正确识别源程序中的单词符号； 识别出的单词以（单词符号，种别码）的形式保存在符号表中； 词法分析中源程序的输入以.c格式，分析后的符号表，将二元组保存在.txt文件中。    实验分析： 待分析的简单的词法   关">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-24T00:57:37.252Z">
+<meta property="og:updated_time" content="2019-04-24T01:17:59.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言词法分析器">
-<meta name="twitter:description" content="实验一  简单的C语言词法分析器的实现实验目的：设计、编制并调试一个简单的c语言词法分析程序，加深对词法分析原理的理解   实验要求： 对单词的构词规则有明确的定义； 编写的分析程序能够正确识别源程序中的单词符号； 识别出的单词以（单词符号，种别码）的形式保存在符号表中； 词法分析中源程序的输入以.c格式，分析后的符号表，将二元组保存在.txt文件中。    实验分析： 待分析的简单的词法（1）">
+<meta name="twitter:description" content="实验一  简单的C语言词法分析器的实现实验目的：设计、编制并调试一个简单的c语言词法分析程序，加深对词法分析原理的理解   实验要求： 对单词的构词规则有明确的定义； 编写的分析程序能够正确识别源程序中的单词符号； 识别出的单词以（单词符号，种别码）的形式保存在符号表中； 词法分析中源程序的输入以.c格式，分析后的符号表，将二元组保存在.txt文件中。    实验分析： 待分析的简单的词法   关">
 
 
 
@@ -355,8 +355,20 @@
 <li>词法分析中源程序的输入以.c格式，分析后的符号表，将二元组保存在.txt文件中。  </li>
 </ol>
 <h3 id="实验分析："><a href="#实验分析：" class="headerlink" title="实验分析："></a>实验分析：</h3><ol>
-<li>待分析的简单的词法<br>（1） 关键字<br>if  else  while  do  for  main return int float double char<br>所有的关键字都是小写。<br>（2）运算符<br>=  +  -  <em>  /   %  &lt;  &lt;=   &gt;  &gt;=  !=  = =<br>（3）界限符<br>;  (  )  { }<br>（4）常量<br>整形常量，通过以下正规式定义：<br>dight dight</em><br>（5）标识符（ID），通过以下正规式定义：<br>letter (letter | digit)*<br>（6）空格有空白、制表符和换行符组成。空格一般用来分隔标识符、整数、运算符、界符和关键字，词法分析阶段被忽略。  </li>
-<li>各种单词符号对应的种别码：<br>|        单词符号         | 类别码 | 单词符号 | 类别码 |<br>| :———————: | :—-: | :——: | :—-: |<br>|          main           |   1    |    &gt;=    |   16   |<br>|           if            |   2    |    &lt;     |   17   |<br>|          else           |   3    |   &lt; =    |   18   |<br>|          wile           |   4    |   = =    |   19   |<br>|           do            |   5    |    !=    |   20   |<br>|           for           |   6    |    =     |   21   |<br>|         return          |   7    |    ；    |   22   |<br>| lettet（letter/digit）<em> |   8    |    (     |   23   |<br>|      dight dight</em>       |   9    |    )     |   24   |<br>|            +            |   10   |    {     |   25   |<br>|           —            |   11   |    }     |   26   |<br>|            *            |   12   |   int    |   27   |<br>|            /            |   13   |  float   |   28   |<br>|            %            |   14   |  double  |   29   |<br>|            &gt;            |   15   |   char   |   30   |</li>
+<li>待分析的简单的词法  <ol>
+<li>关键字<br>if  else  while  do  for  main return int float double char<br>所有的关键字都是小写。  <ol>
+<li>运算符<br>=  +  -  *  /   %  &lt;  &lt;=   &gt;  &gt;=  !=  = =   </li>
+</ol>
+</li>
+<li>界限符<br>;  (  )  { }  <ol>
+<li>常量<br>整形常量，通过以下正规式定义：<br>dight dight*  </li>
+<li>标识符（ID），通过以下正规式定义：<br>letter (letter | digit)*  </li>
+<li>空格有空白、制表符和换行符组成。空格一般用来分隔标识符、整数、运算符、界符和关键字，词法分析阶段被忽略。  </li>
+</ol>
+</li>
+</ol>
+</li>
+<li>各种单词符号对应的种别码：<br>|        单词符号          | 类别码  | 单词符号 | 类别码 |<br>| :———————: | :—-: | :——: | :—-: |<br>|          main           |   1    |    &gt;=    |   16   |<br>|           if            |   2    |    &lt;     |   17   |<br>|          else           |   3    |   &lt; =    |   18   |<br>|          wile           |   4    |   = =    |   19   |<br>|           do            |   5    |    !=    |   20   |<br>|           for           |   6    |    =     |   21   |<br>|         return          |   7    |    ；    |   22   |<br>| lettet（letter/digit）<em> |   8     |    (     |   23   |<br>|      dight dight</em>       |   9    |    )     |   24   |<br>|            +            |   10   |    {     |   25   |<br>|           —             |   11   |    }     |   26   |<br>|            *            |   12   |   int    |   27   |<br>|            /            |   13   |  float   |   28   |<br>|            %            |   14   |  double  |   29   |<br>|            &gt;            |   15   |   char   |   30   |</li>
 </ol>
 <hr>
 <h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><ol>
