@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C,编译原理,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="实验一  简单的C语言词法分析器的实现实验目的：设计、编制并调试一个简单的c语言词法分析程序，加深对词法分析原理的理解   实验要求： 对单词的构词规则有明确的定义； 编写的分析程序能够正确识别源程序中的单词符号； 识别出的单词以（单词符号，种别码）的形式保存在符号表中； 词法分析中源程序的输入以.c格式，分析后的符号表，将二元组保存在.txt文件中。    实验分析： 待分析的简单的词法（1）">
+<meta name="keywords" content="C,编译原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言词法分析器">
+<meta property="og:url" content="http://yoursite.com/2019/04/15/C语言词法分析器/index.html">
+<meta property="og:site_name" content="June的博客">
+<meta property="og:description" content="实验一  简单的C语言词法分析器的实现实验目的：设计、编制并调试一个简单的c语言词法分析程序，加深对词法分析原理的理解   实验要求： 对单词的构词规则有明确的定义； 编写的分析程序能够正确识别源程序中的单词符号； 识别出的单词以（单词符号，种别码）的形式保存在符号表中； 词法分析中源程序的输入以.c格式，分析后的符号表，将二元组保存在.txt文件中。    实验分析： 待分析的简单的词法（1）">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-24T00:57:37.252Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C语言词法分析器">
+<meta name="twitter:description" content="实验一  简单的C语言词法分析器的实现实验目的：设计、编制并调试一个简单的c语言词法分析程序，加深对词法分析原理的理解   实验要求： 对单词的构词规则有明确的定义； 编写的分析程序能够正确识别源程序中的单词符号； 识别出的单词以（单词符号，种别码）的形式保存在符号表中； 词法分析中源程序的输入以.c格式，分析后的符号表，将二元组保存在.txt文件中。    实验分析： 待分析的简单的词法（1）">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/15/C语言词法分析器/">
+
+
+
+
+
+  <title>C语言词法分析器 | June的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">June的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/15/C语言词法分析器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="June">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/portrait.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="June的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C语言词法分析器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-15T10:52:22+08:00">
+                2019-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/专业课作业/" itemprop="url" rel="index">
+                    <span itemprop="name">专业课作业</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="实验一-简单的C语言词法分析器的实现"><a href="#实验一-简单的C语言词法分析器的实现" class="headerlink" title="实验一  简单的C语言词法分析器的实现"></a>实验一  简单的C语言词法分析器的实现</h1><h3 id="实验目的："><a href="#实验目的：" class="headerlink" title="实验目的："></a>实验目的：</h3><p>设计、编制并调试一个简单的c语言词法分析程序，加深对词法分析原理的理解  </p>
+<h3 id="实验要求："><a href="#实验要求：" class="headerlink" title="实验要求："></a>实验要求：</h3><ol>
+<li>对单词的构词规则有明确的定义；</li>
+<li>编写的分析程序能够正确识别源程序中的单词符号；</li>
+<li>识别出的单词以（单词符号，种别码）的形式保存在符号表中；</li>
+<li>词法分析中源程序的输入以.c格式，分析后的符号表，将二元组保存在.txt文件中。  </li>
+</ol>
+<h3 id="实验分析："><a href="#实验分析：" class="headerlink" title="实验分析："></a>实验分析：</h3><ol>
+<li>待分析的简单的词法<br>（1） 关键字<br>if  else  while  do  for  main return int float double char<br>所有的关键字都是小写。<br>（2）运算符<br>=  +  -  <em>  /   %  &lt;  &lt;=   &gt;  &gt;=  !=  = =<br>（3）界限符<br>;  (  )  { }<br>（4）常量<br>整形常量，通过以下正规式定义：<br>dight dight</em><br>（5）标识符（ID），通过以下正规式定义：<br>letter (letter | digit)*<br>（6）空格有空白、制表符和换行符组成。空格一般用来分隔标识符、整数、运算符、界符和关键字，词法分析阶段被忽略。  </li>
+<li>各种单词符号对应的种别码：<br>|        单词符号         | 类别码 | 单词符号 | 类别码 |<br>| :———————: | :—-: | :——: | :—-: |<br>|          main           |   1    |    &gt;=    |   16   |<br>|           if            |   2    |    &lt;     |   17   |<br>|          else           |   3    |   &lt; =    |   18   |<br>|          wile           |   4    |   = =    |   19   |<br>|           do            |   5    |    !=    |   20   |<br>|           for           |   6    |    =     |   21   |<br>|         return          |   7    |    ；    |   22   |<br>| lettet（letter/digit）<em> |   8    |    (     |   23   |<br>|      dight dight</em>       |   9    |    )     |   24   |<br>|            +            |   10   |    {     |   25   |<br>|           —            |   11   |    }     |   26   |<br>|            *            |   12   |   int    |   27   |<br>|            /            |   13   |  float   |   28   |<br>|            %            |   14   |  double  |   29   |<br>|            &gt;            |   15   |   char   |   30   |</li>
+</ol>
+<hr>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><ol>
+<li>只对于单词 数字等进行识别，不需要理解出意思。</li>
+<li>在对关键字标识符单词进行识别时，单独申请了一个数组存放这些关键字；并识别这些单词，判断是哪一个标识符or关键字</li>
+<li>整型常量也要注意整个数字的完整</li>
+<li>&lt;= &gt;= != 这种有两个符号的运算符，也要注意完整扫描</li>
+<li>词法分析的代码主要参考了：<a href="https://www.cnblogs.com/coderkl/p/4320325.html" target="_blank" rel="noopener">https://www.cnblogs.com/coderkl/p/4320325.html</a></li>
+<li>因为实验还要求文件的读写，遂自己补充了功能。</li>
+<li>由于扫描结果输出的结果有int有char型变量，并且有的文件读写函数读一行、读一个单词、字母，写一个字符，等等诸如此类，非常不方便输出。最后一番调试，调用了fstream的头文件，通过”&lt;&lt;”这一字符以类似cout的方式非常方便地输出了结果（本质上还是太菜，对文件读写操作根本不熟</li>
+<li>文件读写参考：<a href="https://www.cnblogs.com/forcheryl/p/3963550.html" target="_blank" rel="noopener">https://www.cnblogs.com/forcheryl/p/3963550.html</a></li>
+</ol>
+<hr>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> special[<span class="number">11</span>][<span class="number">11</span>] = &#123;</span><br><span class="line">    <span class="string">"main"</span>, <span class="string">"if"</span>, <span class="string">"else"</span>, <span class="string">"while"</span>, <span class="string">"do"</span>,</span><br><span class="line">    <span class="string">"for"</span>, <span class="string">"return"</span>, <span class="string">"int"</span>, <span class="string">"float"</span>, <span class="string">"double"</span>, <span class="string">"char"</span>&#125;;</span><br><span class="line"><span class="keyword">char</span> ch;         <span class="comment">//输入</span></span><br><span class="line"><span class="keyword">char</span> input[<span class="number">100</span>]; <span class="comment">//输入的字符串</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> flag;       <span class="comment">//种别码</span></span><br><span class="line"><span class="keyword">int</span> num;        <span class="comment">//存放整型值</span></span><br><span class="line"><span class="keyword">char</span> token[<span class="number">10</span>]; <span class="comment">//单词符号的字符串</span></span><br><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;      <span class="comment">//input计数</span></span><br><span class="line"><span class="keyword">int</span> j = <span class="number">0</span>;  <span class="comment">//token计数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Scanner</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//清空token</span></span><br><span class="line">    j = <span class="number">0</span>; <span class="comment">//token计数</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> a = <span class="number">0</span>; a &lt; <span class="number">10</span>; a++)</span><br><span class="line">    &#123;</span><br><span class="line">        token[a] = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ch = input[i++];</span><br><span class="line">    <span class="keyword">if</span> (ch == <span class="string">' '</span>)</span><br><span class="line">        ch = input[i++];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//关键字、标识符</span></span><br><span class="line">    <span class="keyword">if</span> ((ch &gt;= <span class="string">'a'</span> &amp;&amp; ch &lt;= <span class="string">'z'</span>) || (ch &gt;= <span class="string">'A'</span> &amp;&amp; ch &lt;= <span class="string">'Z'</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> ((ch &gt;= <span class="string">'a'</span> &amp;&amp; ch &lt;= <span class="string">'z'</span>) || (ch &gt;= <span class="string">'A'</span> &amp;&amp; ch &lt;= <span class="string">'Z'</span>) || (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            token[j++] = ch;</span><br><span class="line">            ch = input[i++];</span><br><span class="line">        &#125;</span><br><span class="line">        token[j++] = <span class="string">'\0'</span>;</span><br><span class="line">        ch = input[--i]; <span class="comment">//--i,获取下一个input(一个标识符识别出来之后会多加一个i)</span></span><br><span class="line">        flag = <span class="number">8</span>;        <span class="comment">//关键字类别码</span></span><br><span class="line">        <span class="comment">// 11个关键字、标识符</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> y = <span class="number">0</span>; y &lt; <span class="number">11</span>; y++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">strcmp</span>(token, special[y]) == <span class="number">0</span>) <span class="comment">//main if 标识符类别码</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (y &gt; <span class="number">6</span>) <span class="comment">//int float 等标识符类别码</span></span><br><span class="line">                    y += <span class="number">20</span>;</span><br><span class="line">                flag = y + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//数字(整型常量)</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ((ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> ((ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            num = num * <span class="number">10</span> + ch - <span class="string">'0'</span>; <span class="comment">//???????????</span></span><br><span class="line">            ch = input[i++];</span><br><span class="line">        &#125;</span><br><span class="line">        ch = input[--i];</span><br><span class="line">        flag = <span class="number">9</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//运算符、界限符</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">switch</span> (ch)</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'&gt;'</span>:</span><br><span class="line">            j = <span class="number">0</span>;</span><br><span class="line">            token[j++] = ch;</span><br><span class="line">            ch = input[i++];</span><br><span class="line">            <span class="keyword">if</span> (ch == <span class="string">'='</span>)</span><br><span class="line">            &#123; <span class="comment">//&gt;=</span></span><br><span class="line">                flag = <span class="number">16</span>;</span><br><span class="line">                token[j++] = ch;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123; <span class="comment">// &gt;</span></span><br><span class="line">                flag = <span class="number">15</span>;</span><br><span class="line">                ch = input[--i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'&lt;'</span>:</span><br><span class="line">            token[j++] = ch;</span><br><span class="line">            ch = input[i++];</span><br><span class="line">            <span class="keyword">if</span> (ch == <span class="string">'='</span>)</span><br><span class="line">            &#123; <span class="comment">// &lt;=</span></span><br><span class="line">                flag = <span class="number">18</span>;</span><br><span class="line">                token[j++] = ch;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123; <span class="comment">// &lt;</span></span><br><span class="line">                flag = <span class="number">17</span>;</span><br><span class="line">                ch = input[i--];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'='</span>:</span><br><span class="line">            token[j++] = ch;</span><br><span class="line">            ch = input[i++];</span><br><span class="line">            <span class="keyword">if</span> (ch == <span class="string">'='</span>)</span><br><span class="line">            &#123; <span class="comment">// ==</span></span><br><span class="line">                flag = <span class="number">19</span>;</span><br><span class="line">                token[j++] = ch;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123; <span class="comment">// =</span></span><br><span class="line">                flag = <span class="number">21</span>;</span><br><span class="line">                ch = input[i--];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'!'</span>: <span class="comment">// !=</span></span><br><span class="line">            token[j++] = ch;</span><br><span class="line">            ch = input[i++];</span><br><span class="line">            token[j++] = ch;</span><br><span class="line">            flag = <span class="number">20</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'+'</span>:</span><br><span class="line">            flag = <span class="number">10</span>;</span><br><span class="line">            token[<span class="number">0</span>] = ch;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'-'</span>:</span><br><span class="line">            flag = <span class="number">11</span>;</span><br><span class="line">            token[<span class="number">0</span>] = ch;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'*'</span>:</span><br><span class="line">            flag = <span class="number">12</span>;</span><br><span class="line">            token[<span class="number">0</span>] = ch;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'/'</span>:</span><br><span class="line">            flag = <span class="number">13</span>;</span><br><span class="line">            token[<span class="number">0</span>] = ch;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'%'</span>:</span><br><span class="line">            flag = <span class="number">14</span>;</span><br><span class="line">            token[<span class="number">0</span>] = ch;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">';'</span>:</span><br><span class="line">            flag = <span class="number">22</span>;</span><br><span class="line">            token[<span class="number">0</span>] = ch;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'('</span>:</span><br><span class="line">            flag = <span class="number">23</span>;</span><br><span class="line">            token[<span class="number">0</span>] = ch;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">')'</span>:</span><br><span class="line">            flag = <span class="number">24</span>;</span><br><span class="line">            token[<span class="number">0</span>] = ch;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'&#123;'</span>:</span><br><span class="line">            flag = <span class="number">25</span>;</span><br><span class="line">            token[<span class="number">0</span>] = ch;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'&#125;'</span>:</span><br><span class="line">            flag = <span class="number">26</span>;</span><br><span class="line">            token[<span class="number">0</span>] = ch;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'#'</span>:</span><br><span class="line">            flag = <span class="number">0</span>;</span><br><span class="line">            token[<span class="number">0</span>] = ch;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            flag = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// cout &lt;&lt; special[0] &lt;&lt; endl;</span></span><br><span class="line"></span><br><span class="line">    <span class="function">ifstream <span class="title">OpenFile</span><span class="params">(<span class="string">"test.c"</span>)</span></span>;</span><br><span class="line">    <span class="function">ofstream <span class="title">OutFile</span><span class="params">(<span class="string">"test.txt"</span>,ios::out)</span></span>;</span><br><span class="line">    <span class="keyword">if</span> (OpenFile.fail())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"打开文件错误!"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"read your code from file,end with '#': "</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// ch = getchar(); //cin会忽略空格，导致标识符识别错误</span></span><br><span class="line">        OpenFile.get(ch);</span><br><span class="line">        input[i++] = ch;</span><br><span class="line">    &#125; <span class="keyword">while</span> (ch != <span class="string">'#'</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; input &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    i = <span class="number">0</span>; <span class="comment">//i置0，从input的第一个开始scan</span></span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">        Scanner();</span><br><span class="line">        <span class="keyword">if</span> (flag == <span class="number">9</span>) &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; flag &lt;&lt; <span class="string">","</span> &lt;&lt; num &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            OutFile &lt;&lt; flag &lt;&lt; <span class="string">","</span> &lt;&lt; num &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (flag == <span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"unrecognise"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            OutFile &lt;&lt; <span class="string">"unrecognise"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; flag &lt;&lt; <span class="string">","</span> &lt;&lt; token &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            <span class="comment">// OutFile.put(flag);</span></span><br><span class="line">            OutFile &lt;&lt; flag &lt;&lt; <span class="string">","</span> &lt;&lt; token &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (flag != <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    OpenFile.close();</span><br><span class="line">    OutFile.close();</span><br><span class="line">    getchar();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C</a>
+          
+            <a href="/tags/编译原理/" rel="tag"># 编译原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/10/树的同构/" rel="next" title="+[C] PTA02-习题2 树的同构">
+                <i class="fa fa-chevron-left"></i> +[C] PTA02-习题2 树的同构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/24/TreeTravesalsAgain/" rel="prev" title="+[C] PTA习题03-树3 Tree Travesals Again">
+                +[C] PTA习题03-树3 Tree Travesals Again <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/portrait.jpg" alt="June">
+            
+              <p class="site-author-name" itemprop="name">June</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#实验一-简单的C语言词法分析器的实现"><span class="nav-number">1.</span> <span class="nav-text">实验一  简单的C语言词法分析器的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验目的："><span class="nav-number">1.0.1.</span> <span class="nav-text">实验目的：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验要求："><span class="nav-number">1.0.2.</span> <span class="nav-text">实验要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验分析："><span class="nav-number">1.0.3.</span> <span class="nav-text">实验分析：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析："><span class="nav-number">1.0.4.</span> <span class="nav-text">分析：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.0.5.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">June</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+
+<span id="busuanzi_container_site_uv">
+  本站访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+</span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </footer></div>
+    
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="PAT,C,栈,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="Given a stack which can keep M numbers at most. Push N numbers in the order of 1, 2, 3, …, N and pop randomly. You are supposed to tell if a given sequence of numbers is a possible pop sequence of the">
+<meta name="description" content="输入几串随机数列，来比较判断当前出栈是否合理https://pintia.cn/problem-sets/1077214780527620096/problems/1103507412634030083">
+<meta name="keywords" content="PAT,C,栈">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PopSequence">
+<meta property="og:title" content="+[C] PTA习题 02-线性结构4 Pop Sequence">
 <meta property="og:url" content="http://yoursite.com/2019/04/10/PopSequence/index.html">
 <meta property="og:site_name" content="June的博客">
-<meta property="og:description" content="Given a stack which can keep M numbers at most. Push N numbers in the order of 1, 2, 3, …, N and pop randomly. You are supposed to tell if a given sequence of numbers is a possible pop sequence of the">
+<meta property="og:description" content="输入几串随机数列，来比较判断当前出栈是否合理https://pintia.cn/problem-sets/1077214780527620096/problems/1103507412634030083">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-10T13:07:53.447Z">
+<meta property="og:updated_time" content="2019-04-24T00:25:12.087Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PopSequence">
-<meta name="twitter:description" content="Given a stack which can keep M numbers at most. Push N numbers in the order of 1, 2, 3, …, N and pop randomly. You are supposed to tell if a given sequence of numbers is a possible pop sequence of the">
+<meta name="twitter:title" content="+[C] PTA习题 02-线性结构4 Pop Sequence">
+<meta name="twitter:description" content="输入几串随机数列，来比较判断当前出栈是否合理https://pintia.cn/problem-sets/1077214780527620096/problems/1103507412634030083">
 
 
 
@@ -125,7 +126,7 @@
 
 
 
-  <title>PopSequence | June的博客</title>
+  <title>+[C] PTA习题 02-线性结构4 Pop Sequence | June的博客</title>
   
 
 
@@ -269,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">PopSequence</h1>
+          <h1 class="post-title" itemprop="name headline">+[C] PTA习题 02-线性结构4 Pop Sequence</h1>
         
 
         <div class="post-meta">
@@ -291,6 +292,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DataStructure/" itemprop="url" rel="index">
+                    <span itemprop="name">DataStructure</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -324,11 +347,24 @@
       
 
       
-        <p>Given a stack which can keep M numbers at most. Push N numbers in the order of 1, 2, 3, …, N and pop randomly. You are supposed to tell if a given sequence of numbers is a possible pop sequence of the stack. For example, if M is 5 and N is 7, we can obtain 1, 2, 3, 4, 5, 6, 7 from the stack, but not 3, 2, 1, 7, 5, 6, 4.</p>
+        <p>输入几串随机数列，来比较判断当前出栈是否合理<br><a href="https://pintia.cn/problem-sets/1077214780527620096/problems/1103507412634030083" target="_blank" rel="noopener">https://pintia.cn/problem-sets/1077214780527620096/problems/1103507412634030083</a></p>
+<a id="more"></a>
+<h3 id="C-PTA习题-02-线性结构4-Pop-Sequence"><a href="#C-PTA习题-02-线性结构4-Pop-Sequence" class="headerlink" title="[C] PTA习题 02-线性结构4 Pop Sequence"></a>[C] PTA习题 02-线性结构4 Pop Sequence</h3><p>Given a stack which can keep M numbers at most. Push N numbers in the order of 1, 2, 3, …, N and pop randomly. You are supposed to tell if a given sequence of numbers is a possible pop sequence of the stack. For example, if M is 5 and N is 7, we can obtain 1, 2, 3, 4, 5, 6, 7 from the stack, but not 3, 2, 1, 7, 5, 6, 4.</p>
 <p>Input Specification:<br>Each input file contains one test case. For each case, the first line contains 3 numbers (all no more than 1000): M (the maximum capacity of the stack), N (the length of push sequence), and K (the number of pop sequences to be checked). Then K lines follow, each contains a pop sequence of N numbers. All the numbers in a line are separated by a space.</p>
 <p>Output Specification:<br>For each pop sequence, print in one line “YES” if it is indeed a possible pop sequence of the stack, or “NO” if not.</p>
-<p>Sample Input:<br>5 7 5<br>1 2 3 4 5 6 7<br>3 2 1 7 5 6 4<br>7 6 5 4 3 2 1<br>5 6 4 3 7 2 1<br>1 7 6 5 4 3 2<br>Sample Output:<br>YES<br>NO<br>NO<br>YES<br>NO  </p>
-
+<p>Sample Input:<br>5 7 5<br>1 2 3 4 5 6 7<br>3 2 1 7 5 6 4<br>7 6 5 4 3 2 1<br>5 6 4 3 7 2 1<br>1 7 6 5 4 3 2<br>Sample Output:<br>YES<br>NO<br>NO<br>YES<br>NO    </p>
+<hr>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>这道题看题就看了很久，一直没明白到底要干嘛。后来百度了好多别人的博客，都没有讲的很明白的，不过最终还是弄懂啦。<br>题目要求(我的理解)：</p>
+<ol>
+<li>输入几串随机数列，来比较判断当前出栈是否合理  </li>
+<li>如何判断不合理的标准：<ol>
+<li>栈非空 且 栈顶元素&gt;将要比较的出栈元素</li>
+<li><strong>或者</strong> 栈满 且 栈顶元素&lt;将要比较的出栈元素</li>
+</ol>
+</li>
+</ol>
+<p>然后就是对于栈的操作的熟悉啦，栈的结构、栈的初始化、出栈、入栈。<br><a href="https://www.cnblogs.com/yudongxuan/p/7727605.html" target="_blank" rel="noopener">https://www.cnblogs.com/yudongxuan/p/7727605.html</a><br>详细注释见代码</p>
+<h3 id="PopSequence-代码实现"><a href="#PopSequence-代码实现" class="headerlink" title="PopSequence 代码实现"></a>PopSequence 代码实现</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span>  <span class="comment">//c语言栈基本结构的构造</span></span><br><span class="line">    <span class="keyword">int</span> *Data;</span><br><span class="line">    <span class="keyword">int</span> Top;</span><br><span class="line">    <span class="keyword">int</span> MaxSize;</span><br><span class="line">&#125;*Stack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> M, N, K;  <span class="comment">//全局变量，放在栈结构后，方便子函数使用</span></span><br><span class="line"></span><br><span class="line"><span class="function">Stack <span class="title">CreateStack</span><span class="params">(<span class="keyword">int</span> MaxSize)</span> </span>&#123;</span><br><span class="line">    Stack S = (Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct Node));</span><br><span class="line">    S-&gt;Data = (<span class="keyword">int</span> *)<span class="built_in">malloc</span>(MaxSize * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    S-&gt;Top = <span class="number">-1</span>;</span><br><span class="line">    S-&gt;MaxSize = MaxSize;</span><br><span class="line">    <span class="keyword">return</span> S;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">(Stack S, <span class="keyword">int</span> ele)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (S-&gt;Top == S-&gt;MaxSize) &#123;  <span class="comment">//短路写法，遇错就返回，提高程序可读性</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"FULL\n"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    S-&gt;Data[++(S-&gt;Top)] = ele;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Pop</span><span class="params">(Stack S)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (S-&gt;Top == <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Empty\n"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    S-&gt;Top--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">top</span><span class="params">(Stack S)</span> </span>&#123;  <span class="comment">//返回栈顶元素</span></span><br><span class="line">    <span class="keyword">return</span> S-&gt;Data[S-&gt;Top];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">StackCheck</span><span class="params">(<span class="keyword">int</span> *v,Stack S)</span> </span>&#123;  <span class="comment">//检查输出序列是否为容量为M的栈输出序列</span></span><br><span class="line">    <span class="keyword">int</span> idx = <span class="number">0</span>;  <span class="comment">//数组v的指标，指向下一个将要出栈的元素</span></span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">1</span>;  <span class="comment">//按顺序进栈的元素，进栈自动加1</span></span><br><span class="line">    S-&gt;Top = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span> (idx != N) &#123;</span><br><span class="line">        <span class="keyword">while</span> ( (S-&gt;Top != <span class="number">-1</span> &amp;&amp; top(S)&lt;v[idx]&amp;&amp;S-&gt;Top+<span class="number">1</span>&lt;M) || </span><br><span class="line">                (S-&gt;Top==<span class="number">-1</span>&amp;&amp;idx!=N)) &#123;</span><br><span class="line">            Push(S, num++);  <span class="comment">//若栈非空且栈顶元素小于将要比较的出栈元素或者栈为空且idx未滑至N(即出栈序列未比较完成）</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (S-&gt;Top!=<span class="number">-1</span>&amp;&amp;top(S) == v[idx]) &#123;  <span class="comment">//栈非空且栈顶元素值等于将要比较的出栈元素</span></span><br><span class="line">            Pop(S);</span><br><span class="line">            idx++;</span><br><span class="line">        &#125;</span><br><span class="line">         <span class="comment">/*  栈非空 且 栈顶元素&gt;将要比较的出栈元素</span></span><br><span class="line"><span class="comment">            or 栈满 且 栈顶元素&lt;将要比较的出栈元素</span></span><br><span class="line"><span class="comment">            则非法 </span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">if</span> ((S-&gt;Top != <span class="number">-1</span>&amp;&amp;top(S)&gt;v[idx]) || (</span><br><span class="line">            S-&gt;Top + <span class="number">1</span> == M&amp;&amp;top(S) != v[idx])) &#123;  </span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j;</span><br><span class="line">    Stack S;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;M, &amp;N, &amp;K);</span><br><span class="line">    <span class="keyword">int</span> *v = (<span class="keyword">int</span> *)<span class="built_in">malloc</span>(N * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    S = CreateStack(M);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>;i &lt; K;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>;j &lt; N;j++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, v + j);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (StackCheck(v, S))</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -343,6 +379,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/PAT/" rel="tag"># PAT</a>
+          
+            <a href="/tags/C/" rel="tag"># C</a>
+          
+            <a href="/tags/栈/" rel="tag"># 栈</a>
+          
+        </div>
+      
 
       
       
@@ -352,8 +398,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/10/ReversingLinkedList/" rel="next" title="+[C] PTA 02-线性结构3 Reversing Linked List">
-                <i class="fa fa-chevron-left"></i> +[C] PTA 02-线性结构3 Reversing Linked List
+              <a href="/2019/04/10/ReversingLinkedList/" rel="next" title="+[C] PTA习题 02-线性结构3 Reversing Linked List">
+                <i class="fa fa-chevron-left"></i> +[C] PTA习题 02-线性结构3 Reversing Linked List
               </a>
             
           </div>
@@ -416,8 +462,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -434,7 +489,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -445,7 +500,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -456,7 +511,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -479,6 +534,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-PTA习题-02-线性结构4-Pop-Sequence"><span class="nav-number">1.</span> <span class="nav-text">[C] PTA习题 02-线性结构4 Pop Sequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PopSequence-代码实现"><span class="nav-number">3.</span> <span class="nav-text">PopSequence 代码实现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
