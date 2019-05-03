@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="PAT,C,">
+  <meta name="keywords" content="C,PAT,">
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="最大子列和–在线处理算法输出子列和参考：https://pintia.cn/problem-sets/994805342720868352/problems/994805514284679168https://pintia.cn/problem-sets/1077214780527620096/problems/1077218398207094785">
-<meta name="keywords" content="PAT,C">
+<meta name="keywords" content="C,PAT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="+[C] PAT 1007 -- Maximum Subsequence Sum">
 <meta property="og:url" content="http://yoursite.com/2019/04/01/MaxSubsequenceSum/index.html">
@@ -100,7 +100,7 @@
     root: '/',
     scheme: 'Muse',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -375,9 +375,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/PAT/" rel="tag"># PAT</a>
-          
             <a href="/tags/C/" rel="tag"># C</a>
+          
+            <a href="/tags/PAT/" rel="tag"># PAT</a>
           
         </div>
       
@@ -449,6 +449,8 @@
 
   <aside id="sidebar" class="sidebar">
     
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
@@ -481,7 +483,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -513,6 +515,22 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/JuneLikesYogurt" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xyzjun11@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -558,7 +576,7 @@
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">June</span>
 
@@ -617,6 +635,8 @@
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
         
+          <span id="scrollpercent"><span>0</span>%</span>
+        
       </div>
     
 
@@ -642,6 +662,8 @@
 
   
 
+
+  
 
 
 
@@ -681,6 +703,11 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
