@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, 琴, blog">
+  <meta name="keywords" content="C,PAT,树,堆,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="函数题https://pintia.cn/problem-sets/1077214780527620096/problems/1103507412634030080">
+<meta name="description" content="堆的基本操作https://pintia.cn/problem-sets/1077214780527620096/problems/1111280682067111936">
+<meta name="keywords" content="C,PAT,树,堆">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【C】PTA习题 02-线性结构1 两个有序链表序列的合并">
-<meta property="og:url" content="http://yoursite.com/2019/04/10/两个有序链表序列的合并/index.html">
+<meta property="og:title" content="【C】 PTA习题 05-树7 堆中的路径">
+<meta property="og:url" content="http://yoursite.com/2019/05/04/堆中的路径/index.html">
 <meta property="og:site_name" content="June的博客">
-<meta property="og:description" content="函数题https://pintia.cn/problem-sets/1077214780527620096/problems/1103507412634030080">
+<meta property="og:description" content="堆的基本操作https://pintia.cn/problem-sets/1077214780527620096/problems/1111280682067111936">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-03T11:05:17.284Z">
+<meta property="og:updated_time" content="2019-05-04T06:39:15.053Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【C】PTA习题 02-线性结构1 两个有序链表序列的合并">
-<meta name="twitter:description" content="函数题https://pintia.cn/problem-sets/1077214780527620096/problems/1103507412634030080">
+<meta name="twitter:title" content="【C】 PTA习题 05-树7 堆中的路径">
+<meta name="twitter:description" content="堆的基本操作https://pintia.cn/problem-sets/1077214780527620096/problems/1111280682067111936">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/10/两个有序链表序列的合并/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/04/堆中的路径/">
 
 
 
 
 
-  <title>【C】PTA习题 02-线性结构1 两个有序链表序列的合并 | June的博客</title>
+  <title>【C】 PTA习题 05-树7 堆中的路径 | June的博客</title>
   
 
 
@@ -252,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/10/两个有序链表序列的合并/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/堆中的路径/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="June">
@@ -269,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【C】PTA习题 02-线性结构1 两个有序链表序列的合并</h1>
+          <h1 class="post-title" itemprop="name headline">【C】 PTA习题 05-树7 堆中的路径</h1>
         
 
         <div class="post-meta">
@@ -281,8 +282,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-10T21:03:08+08:00">
-                2019-04-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-04T14:31:37+08:00">
+                2019-05-04
               </time>
             
 
@@ -297,12 +298,34 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-05-03T19:05:17+08:00">
-                2019-05-03
+              <time title="Post modified" itemprop="dateModified" datetime="2019-05-04T14:39:15+08:00">
+                2019-05-04
               </time>
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DataStructure/" itemprop="url" rel="index">
+                    <span itemprop="name">DataStructure</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -336,15 +359,14 @@
       
 
       
-        <p>函数题<br><a href="https://pintia.cn/problem-sets/1077214780527620096/problems/1103507412634030080" target="_blank" rel="noopener">https://pintia.cn/problem-sets/1077214780527620096/problems/1103507412634030080</a><br><a id="more"></a></p>
-<h3 id="两个有序链表序列的合并"><a href="#两个有序链表序列的合并" class="headerlink" title="两个有序链表序列的合并"></a>两个有序链表序列的合并</h3><p>本题要求实现一个函数，将两个链表表示的递增整数序列合并为一个非递减的整数序列。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">函数接口定义：</span><br><span class="line"><span class="function">List <span class="title">Merge</span><span class="params">( List L1, List L2 )</span></span>;</span><br><span class="line">其中List结构定义如下：</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">PtrToNode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    ElementType Data; <span class="comment">/* 存储结点数据 */</span></span><br><span class="line">    PtrToNode   Next; <span class="comment">/* 指向下一个结点的指针 */</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> PtrToNode List; <span class="comment">/* 定义单链表类型 */</span></span><br><span class="line">L1和L2是给定的带头结点的单链表，其结点存储的数据是递增有序的；函数Merge要将L1和L2合并为一个非递减的整数序列。应直接使用原序列中的结点，返回归并后的带头结点的链表头指针。</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">裁判测试程序样例：</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">PtrToNode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    ElementType Data;</span><br><span class="line">    PtrToNode   Next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> PtrToNode List;</span><br><span class="line"></span><br><span class="line"><span class="function">List <span class="title">Read</span><span class="params">()</span></span>; <span class="comment">/* 细节在此不表 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">( List L )</span></span>; <span class="comment">/* 细节在此不表；空链表将输出NULL */</span></span><br><span class="line"></span><br><span class="line"><span class="function">List <span class="title">Merge</span><span class="params">( List L1, List L2 )</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    List L1, L2, L;</span><br><span class="line">    L1 = Read();</span><br><span class="line">    L2 = Read();</span><br><span class="line">    L = Merge(L1, L2);</span><br><span class="line">    Print(L);</span><br><span class="line">    Print(L1);</span><br><span class="line">    Print(L2);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 你的代码将被嵌在这里 */</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入样例：</span><br><span class="line">3</span><br><span class="line">1 3 5</span><br><span class="line">5</span><br><span class="line">2 4 6 8 10</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输出样例：</span><br><span class="line">1 2 3 4 5 6 8 10 </span><br><span class="line">NULL</span><br><span class="line">NULL</span><br></pre></td></tr></table></figure>
-<hr>
-<p>整体还是比较简单，注意几个坑，注释都在代码里了</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List <span class="title">Merge</span><span class="params">( List L1, List L2 )</span> </span>&#123;</span><br><span class="line">    List L, LL, a, b;</span><br><span class="line">    L = (List)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct Node));</span><br><span class="line">    LL = L;</span><br><span class="line">    <span class="comment">//不能直接L1L2指针后移，最后要将L1L2置NULL</span></span><br><span class="line">    a = L1-&gt;Next;</span><br><span class="line">    b = L2-&gt;Next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (a != <span class="literal">NULL</span> &amp;&amp; b != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(a-&gt;Data &lt;= b-&gt;Data) &#123;</span><br><span class="line">            LL-&gt;Next = a;</span><br><span class="line">            LL = a;</span><br><span class="line">            a = a-&gt;Next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            LL-&gt;Next = b;</span><br><span class="line">            LL = b;</span><br><span class="line">            b = b-&gt;Next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(a != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        LL-&gt;Next = a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(b != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        LL-&gt;Next = b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//合并之后，L1L2要置NULL</span></span><br><span class="line">    L1-&gt;Next = <span class="literal">NULL</span>;</span><br><span class="line">    L2-&gt;Next = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>堆的基本操作<br><a href="https://pintia.cn/problem-sets/1077214780527620096/problems/1111280682067111936" target="_blank" rel="noopener">https://pintia.cn/problem-sets/1077214780527620096/problems/1111280682067111936</a></p>
+<a id="more"></a>
+<h2 id="堆中的路径"><a href="#堆中的路径" class="headerlink" title="堆中的路径"></a>堆中的路径</h2><p>将一系列给定数字插入一个初始为空的小顶堆H[]。随后对任意给定的下标i，打印从H[i]到根结点的路径。</p>
+<p>输入格式:<br>每组测试第1行包含2个正整数N和M(≤1000)，分别是插入元素的个数、以及需要打印的路径条数。下一行给出区间[-10000, 10000]内的N个要被插入一个初始为空的小顶堆的整数。最后一行给出M个下标。</p>
+<p>输出格式:<br>对输入中给出的每个下标i，在一行中输出从H[i]到根结点的路径上的数据。数字间以1个空格分隔，行末不得有多余空格。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入样例:</span><br><span class="line">5 3</span><br><span class="line">46 23 26 24 10</span><br><span class="line">5 4 3</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输出样例:</span><br><span class="line">24 23 10</span><br><span class="line">46 23 10</span><br><span class="line">26 10</span><br></pre></td></tr></table></figure>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>构建最小堆，并根据提供的下标，输出下标位置到根节点的路径<br>参考数据机构第五章，堆的插入时的讲解，以及小白专场中的题解。<br>插入堆时的for循环和平时写的很不一样，要结合堆的插入操作进行理解。<br>详细注释见代码</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1001</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MINH -10001</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> H[MAXN], size;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Create</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    size = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//设置岗哨</span></span><br><span class="line">    H[<span class="number">0</span>] = MINH;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">int</span> X)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//将X插入H</span></span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*  最小堆</span></span><br><span class="line"><span class="comment">        i指向插入后，堆中的最后一个元素的位置</span></span><br><span class="line"><span class="comment">        为了满足最小堆，而不被插入的新的数据破坏，</span></span><br><span class="line"><span class="comment">        所以，将其向上不断比较、交换</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">for</span> (i = ++size; H[i / <span class="number">2</span>] &gt; X; i/=<span class="number">2</span>)</span><br><span class="line">        H[i] = H[i / <span class="number">2</span>];    <span class="comment">//向下（数字大小）过滤节点，对于树形结构来说向上查找</span></span><br><span class="line">    H[i] = X;   <span class="comment">//插入</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, m, x, i, j;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="comment">//堆初始化</span></span><br><span class="line">    Create();</span><br><span class="line">    <span class="comment">//逐个插入、建堆</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line">        Insert(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;j);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>, H[j]);</span><br><span class="line">        <span class="keyword">while</span>(j&gt;<span class="number">1</span>) &#123;</span><br><span class="line">            j /= <span class="number">2</span>;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">" %d"</span>, H[j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// for (i = 0; i &lt;= n;i++)</span></span><br><span class="line">    <span class="comment">//     printf("%d ", H[i]);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -359,6 +381,18 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C</a>
+          
+            <a href="/tags/PAT/" rel="tag"># PAT</a>
+          
+            <a href="/tags/树/" rel="tag"># 树</a>
+          
+            <a href="/tags/堆/" rel="tag"># 堆</a>
+          
+        </div>
+      
 
       
       
@@ -368,8 +402,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/10/PopSequence/" rel="next" title="【C】 PTA习题 02-线性结构4 Pop Sequence">
-                <i class="fa fa-chevron-left"></i> 【C】 PTA习题 02-线性结构4 Pop Sequence
+              <a href="/2019/05/03/CompleteBinarySearchTree/" rel="next" title="【C】PTA 习题04-树6 Complete Binary Search Tree">
+                <i class="fa fa-chevron-left"></i> 【C】PTA 习题04-树6 Complete Binary Search Tree
               </a>
             
           </div>
@@ -378,8 +412,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/10/树的同构/" rel="prev" title="【C】 PTA02-习题2 树的同构">
-                【C】 PTA02-习题2 树的同构 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/04/FileTransfer/" rel="prev" title="【C】 PTA习题 05-树8 File Transfer">
+                【C】 PTA习题 05-树8 File Transfer <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -532,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#两个有序链表序列的合并"><span class="nav-number">1.</span> <span class="nav-text">两个有序链表序列的合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#堆中的路径"><span class="nav-number">1.</span> <span class="nav-text">堆中的路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
