@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="C,笔记,">
+  <meta name="keywords" content="笔记,C,">
 
 
 
@@ -80,16 +80,16 @@
 
 
 <meta name="description" content="C语言笔记_翁恺mooc上翁恺老师的C语言程序设计，视频笔记 指针数组变量是特殊指针 数组变量本身表达地址数组单元表达的是变量 []、*运算符，可以对指针、数组做 数组变量是const指针，所以不能被赋值 int a[]    &amp;lt;==&amp;gt;   int *const a =  指针与const 指针是const 不能再指向别的变量 123int *const q = &amp;amp;i;  //">
-<meta name="keywords" content="C,笔记">
+<meta name="keywords" content="笔记,C">
 <meta property="og:type" content="article">
-<meta property="og:title" content="+[C] Notes">
+<meta property="og:title" content="C语言 Notes">
 <meta property="og:url" content="http://yoursite.com/2019/05/03/C_Notes/index.html">
 <meta property="og:site_name" content="June的博客">
 <meta property="og:description" content="C语言笔记_翁恺mooc上翁恺老师的C语言程序设计，视频笔记 指针数组变量是特殊指针 数组变量本身表达地址数组单元表达的是变量 []、*运算符，可以对指针、数组做 数组变量是const指针，所以不能被赋值 int a[]    &amp;lt;==&amp;gt;   int *const a =  指针与const 指针是const 不能再指向别的变量 123int *const q = &amp;amp;i;  //">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-03T02:30:56.772Z">
+<meta property="og:updated_time" content="2019-05-04T02:31:30.156Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="+[C] Notes">
+<meta name="twitter:title" content="C语言 Notes">
 <meta name="twitter:description" content="C语言笔记_翁恺mooc上翁恺老师的C语言程序设计，视频笔记 指针数组变量是特殊指针 数组变量本身表达地址数组单元表达的是变量 []、*运算符，可以对指针、数组做 数组变量是const指针，所以不能被赋值 int a[]    &amp;lt;==&amp;gt;   int *const a =  指针与const 指针是const 不能再指向别的变量 123int *const q = &amp;amp;i;  //">
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>+[C] Notes | June的博客</title>
+  <title>C语言 Notes | June的博客</title>
   
 
 
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">+[C] Notes</h1>
+          <h1 class="post-title" itemprop="name headline">C语言 Notes</h1>
         
 
         <div class="post-meta">
@@ -288,7 +288,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-05-04T10:31:30+08:00">
+                2019-05-04
+              </time>
             
           </span>
 
@@ -371,6 +383,45 @@ void* malloc(size_t size)
 </li>
 </ol>
 <h2 id="结构类型"><a href="#结构类型" class="headerlink" title="结构类型"></a>结构类型</h2><h3 id="typedef"><a href="#typedef" class="headerlink" title="typedef"></a>typedef</h3><p>声明一个已有的数据类型的新名字。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> length</span><br><span class="line"><span class="comment">//int:原来的类型名字  </span></span><br><span class="line"><span class="comment">//length:现在的类型名字</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;aNode;</span><br><span class="line"><span class="comment">//or</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span> <span class="title">aNode</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h2><h3 id="全局变量-1"><a href="#全局变量-1" class="headerlink" title="全局变量"></a>全局变量</h3><ol>
+<li>不初始化，全局变量=0，指针=NULL</li>
+<li>初始化发生在main之前</li>
+</ol>
+<h3 id="静态本地变量"><a href="#静态本地变量" class="headerlink" title="静态本地变量"></a>静态本地变量</h3><ol>
+<li>静态本地变量，在本地变量定义前加上static</li>
+<li>函数离开时，静态本地变量继续存在，并保存其值</li>
+<li>只在第一次初始化</li>
+<li>是特殊的<strong>全局变量</strong>，位于相同的内存区域</li>
+<li>有全局的生存期，函数内的局部作用域</li>
+</ol>
+<h3 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h3><ol>
+<li><code>#include</code>编译预处理指令</li>
+<li>它把那个文件的全部文本内容原封不动地插入到它所在的地方</li>
+<li><code>&quot;&quot;</code>,现在当前目录找，然后在编译器指定目录找</li>
+<li><code>&lt;&gt;</code>,只在指定的目录找</li>
+<li>在<strong>函数</strong>或者<strong>全局变量</strong>前，加上static，则其只能在<strong>当前</strong>编译单元中使用</li>
+</ol>
+<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><pre><code>int i; //是变量的定义
+extern int i;   //是变量的声明
+</code></pre><ol>
+<li>声明，不产生代码<ol>
+<li>函数原型</li>
+<li>变量声明</li>
+<li>结构声明</li>
+<li>宏声明</li>
+<li>美剧生命</li>
+<li>类型声明</li>
+<li>inline函数</li>
+</ol>
+</li>
+<li>定义，产生代码</li>
+<li><p>只有声明可以放在头文件中</p>
+<h4 id="标准头文件结构"><a href="#标准头文件结构" class="headerlink" title="标准头文件结构"></a>标准头文件结构</h4><p>防止头文件的重复定义</p>
+<p> #ifndef _LIST_HEAD_<br> #define _LIST_HEAD_</p>
+<p> extern int i;</p>
+<p> #endif</p>
+</li>
+</ol>
 
       
     </div>
@@ -388,9 +439,9 @@ void* malloc(size_t size)
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"># C</a>
-          
             <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+            <a href="/tags/C/" rel="tag"># C</a>
           
         </div>
       
@@ -403,8 +454,8 @@ void* malloc(size_t size)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/24/ListLeaves/" rel="next" title="+[C] PTA习题 03-树2 List Leaves">
-                <i class="fa fa-chevron-left"></i> +[C] PTA习题 03-树2 List Leaves
+              <a href="/2019/04/24/ListLeaves/" rel="next" title="【C】 PTA习题 03-树2 List Leaves">
+                <i class="fa fa-chevron-left"></i> 【C】 PTA习题 03-树2 List Leaves
               </a>
             
           </div>
@@ -412,6 +463,10 @@ void* malloc(size_t size)
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/03/CompleteBinarySearchTree/" rel="prev" title="【C】PTA 习题04-树6 Complete Binary Search Tree">
+                【C】PTA 习题04-树6 Complete Binary Search Tree <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -492,7 +547,7 @@ void* malloc(size_t size)
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -563,7 +618,7 @@ void* malloc(size_t size)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C语言笔记-翁恺"><span class="nav-number">1.</span> <span class="nav-text">C语言笔记_翁恺</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#指针"><span class="nav-number">1.1.</span> <span class="nav-text">指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组变量是特殊指针"><span class="nav-number">1.1.1.</span> <span class="nav-text">数组变量是特殊指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针与const"><span class="nav-number">1.1.2.</span> <span class="nav-text">指针与const</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#malloc-动态内存分配"><span class="nav-number">1.1.3.</span> <span class="nav-text">malloc,动态内存分配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构类型"><span class="nav-number">1.2.</span> <span class="nav-text">结构类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#typedef"><span class="nav-number">1.2.1.</span> <span class="nav-text">typedef</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C语言笔记-翁恺"><span class="nav-number">1.</span> <span class="nav-text">C语言笔记_翁恺</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#指针"><span class="nav-number">1.1.</span> <span class="nav-text">指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组变量是特殊指针"><span class="nav-number">1.1.1.</span> <span class="nav-text">数组变量是特殊指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针与const"><span class="nav-number">1.1.2.</span> <span class="nav-text">指针与const</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#malloc-动态内存分配"><span class="nav-number">1.1.3.</span> <span class="nav-text">malloc,动态内存分配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构类型"><span class="nav-number">1.2.</span> <span class="nav-text">结构类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#typedef"><span class="nav-number">1.2.1.</span> <span class="nav-text">typedef</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局变量"><span class="nav-number">1.3.</span> <span class="nav-text">全局变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局变量-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">全局变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态本地变量"><span class="nav-number">1.3.2.</span> <span class="nav-text">静态本地变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#头文件"><span class="nav-number">1.3.3.</span> <span class="nav-text">头文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#声明"><span class="nav-number">1.3.4.</span> <span class="nav-text">声明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标准头文件结构"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">标准头文件结构</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

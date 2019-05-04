@@ -81,14 +81,14 @@
 
 <meta name="description" content="函数题https://pintia.cn/problem-sets/1077214780527620096/problems/1103507412634030080">
 <meta property="og:type" content="article">
-<meta property="og:title" content="+[C] PTA习题 02-线性结构1 两个有序链表序列的合并">
+<meta property="og:title" content="【C】PTA习题 02-线性结构1 两个有序链表序列的合并">
 <meta property="og:url" content="http://yoursite.com/2019/04/10/两个有序链表序列的合并/index.html">
 <meta property="og:site_name" content="June的博客">
 <meta property="og:description" content="函数题https://pintia.cn/problem-sets/1077214780527620096/problems/1103507412634030080">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-24T01:11:52.143Z">
+<meta property="og:updated_time" content="2019-05-03T11:05:17.284Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="+[C] PTA习题 02-线性结构1 两个有序链表序列的合并">
+<meta name="twitter:title" content="【C】PTA习题 02-线性结构1 两个有序链表序列的合并">
 <meta name="twitter:description" content="函数题https://pintia.cn/problem-sets/1077214780527620096/problems/1103507412634030080">
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>+[C] PTA习题 02-线性结构1 两个有序链表序列的合并 | June的博客</title>
+  <title>【C】PTA习题 02-线性结构1 两个有序链表序列的合并 | June的博客</title>
   
 
 
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">+[C] PTA习题 02-线性结构1 两个有序链表序列的合并</h1>
+          <h1 class="post-title" itemprop="name headline">【C】PTA习题 02-线性结构1 两个有序链表序列的合并</h1>
         
 
         <div class="post-meta">
@@ -287,7 +287,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-05-03T19:05:17+08:00">
+                2019-05-03
+              </time>
             
           </span>
 
@@ -325,7 +337,7 @@
 
       
         <p>函数题<br><a href="https://pintia.cn/problem-sets/1077214780527620096/problems/1103507412634030080" target="_blank" rel="noopener">https://pintia.cn/problem-sets/1077214780527620096/problems/1103507412634030080</a><br><a id="more"></a></p>
-<h3 id="C-PTA习题-02-线性结构1-两个有序链表序列的合并"><a href="#C-PTA习题-02-线性结构1-两个有序链表序列的合并" class="headerlink" title="[C] PTA习题 02-线性结构1 两个有序链表序列的合并"></a>[C] PTA习题 02-线性结构1 两个有序链表序列的合并</h3><p>本题要求实现一个函数，将两个链表表示的递增整数序列合并为一个非递减的整数序列。</p>
+<h3 id="两个有序链表序列的合并"><a href="#两个有序链表序列的合并" class="headerlink" title="两个有序链表序列的合并"></a>两个有序链表序列的合并</h3><p>本题要求实现一个函数，将两个链表表示的递增整数序列合并为一个非递减的整数序列。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">函数接口定义：</span><br><span class="line"><span class="function">List <span class="title">Merge</span><span class="params">( List L1, List L2 )</span></span>;</span><br><span class="line">其中List结构定义如下：</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">PtrToNode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    ElementType Data; <span class="comment">/* 存储结点数据 */</span></span><br><span class="line">    PtrToNode   Next; <span class="comment">/* 指向下一个结点的指针 */</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> PtrToNode List; <span class="comment">/* 定义单链表类型 */</span></span><br><span class="line">L1和L2是给定的带头结点的单链表，其结点存储的数据是递增有序的；函数Merge要将L1和L2合并为一个非递减的整数序列。应直接使用原序列中的结点，返回归并后的带头结点的链表头指针。</span><br></pre></td></tr></table></figure>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">裁判测试程序样例：</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">PtrToNode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    ElementType Data;</span><br><span class="line">    PtrToNode   Next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> PtrToNode List;</span><br><span class="line"></span><br><span class="line"><span class="function">List <span class="title">Read</span><span class="params">()</span></span>; <span class="comment">/* 细节在此不表 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">( List L )</span></span>; <span class="comment">/* 细节在此不表；空链表将输出NULL */</span></span><br><span class="line"></span><br><span class="line"><span class="function">List <span class="title">Merge</span><span class="params">( List L1, List L2 )</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    List L1, L2, L;</span><br><span class="line">    L1 = Read();</span><br><span class="line">    L2 = Read();</span><br><span class="line">    L = Merge(L1, L2);</span><br><span class="line">    Print(L);</span><br><span class="line">    Print(L1);</span><br><span class="line">    Print(L2);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 你的代码将被嵌在这里 */</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入样例：</span><br><span class="line">3</span><br><span class="line">1 3 5</span><br><span class="line">5</span><br><span class="line">2 4 6 8 10</span><br></pre></td></tr></table></figure>
@@ -356,8 +368,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/10/PopSequence/" rel="next" title="+[C] PTA习题 02-线性结构4 Pop Sequence">
-                <i class="fa fa-chevron-left"></i> +[C] PTA习题 02-线性结构4 Pop Sequence
+              <a href="/2019/04/10/PopSequence/" rel="next" title="【C】 PTA习题 02-线性结构4 Pop Sequence">
+                <i class="fa fa-chevron-left"></i> 【C】 PTA习题 02-线性结构4 Pop Sequence
               </a>
             
           </div>
@@ -366,8 +378,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/10/树的同构/" rel="prev" title="+[C] PTA02-习题2 树的同构">
-                +[C] PTA02-习题2 树的同构 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/10/树的同构/" rel="prev" title="【C】 PTA02-习题2 树的同构">
+                【C】 PTA02-习题2 树的同构 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -449,7 +461,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -520,7 +532,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-PTA习题-02-线性结构1-两个有序链表序列的合并"><span class="nav-number">1.</span> <span class="nav-text">[C] PTA习题 02-线性结构1 两个有序链表序列的合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#两个有序链表序列的合并"><span class="nav-number">1.</span> <span class="nav-text">两个有序链表序列的合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
