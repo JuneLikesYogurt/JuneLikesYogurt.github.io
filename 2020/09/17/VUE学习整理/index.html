@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="VUE,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="计算属性 &amp;amp; 方法计算属性是基于它们的响应式依赖进行缓存1234&amp;lt;div id=&quot;example&quot;&amp;gt;  &amp;lt;p&amp;gt;Original message: &quot;&amp;#123;&amp;#123; message &amp;#125;&amp;#125;&quot;&amp;lt;/p&amp;gt;  &amp;lt;p&amp;gt;Computed reversed message: &quot;&amp;#123;&amp;#123; reversedMessag">
+<meta name="keywords" content="VUE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VUE学习整理">
+<meta property="og:url" content="http://yoursite.com/2020/09/17/VUE学习整理/index.html">
+<meta property="og:site_name" content="暂时不在的博客">
+<meta property="og:description" content="计算属性 &amp;amp; 方法计算属性是基于它们的响应式依赖进行缓存1234&amp;lt;div id=&quot;example&quot;&amp;gt;  &amp;lt;p&amp;gt;Original message: &quot;&amp;#123;&amp;#123; message &amp;#125;&amp;#125;&quot;&amp;lt;/p&amp;gt;  &amp;lt;p&amp;gt;Computed reversed message: &quot;&amp;#123;&amp;#123; reversedMessag">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-09-28T02:31:46.291Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VUE学习整理">
+<meta name="twitter:description" content="计算属性 &amp;amp; 方法计算属性是基于它们的响应式依赖进行缓存1234&amp;lt;div id=&quot;example&quot;&amp;gt;  &amp;lt;p&amp;gt;Original message: &quot;&amp;#123;&amp;#123; message &amp;#125;&amp;#125;&quot;&amp;lt;/p&amp;gt;  &amp;lt;p&amp;gt;Computed reversed message: &quot;&amp;#123;&amp;#123; reversedMessag">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/09/17/VUE学习整理/">
+
+
+
+
+
+  <title>VUE学习整理 | 暂时不在的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">暂时不在的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/17/VUE学习整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="暂时不在">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/portrait1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="暂时不在的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">VUE学习整理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-17T10:46:27+08:00">
+                2020-09-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-28T10:31:46+08:00">
+                2020-09-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/draft/" itemprop="url" rel="index">
+                    <span itemprop="name">draft</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="计算属性-amp-方法"><a href="#计算属性-amp-方法" class="headerlink" title="计算属性 &amp; 方法"></a>计算属性 &amp; 方法</h3><p>计算属性是基于它们的响应式依赖进行缓存<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Original message: "&#123;&#123; message &#125;&#125;"<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Computed reversed message: "&#123;&#123; reversedMessage &#125;&#125;"<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'Hello'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    <span class="comment">// 计算属性的 getter</span></span><br><span class="line">    reversedMessage: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// `this` 指向 vm 实例</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.message.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="计算属性-amp-侦听属性"><a href="#计算属性-amp-侦听属性" class="headerlink" title="计算属性 &amp; 侦听属性"></a>计算属性 &amp; 侦听属性</h3><p><strong>computed</strong><br><strong>watch</strong>，大多数情况下计算属性更合适。<br>有时也要用自定义的侦听器。（当需要在数据变化时执行异步操作or开销较大的操作时）<br><a href="https://segmentfault.com/a/1190000012948175?utm_source=tag-newest" target="_blank" rel="noopener">https://segmentfault.com/a/1190000012948175?utm_source=tag-newest</a><br><a href="https://www.cnblogs.com/jiajialove/p/11327945.html" target="_blank" rel="noopener">https://www.cnblogs.com/jiajialove/p/11327945.html</a></p>
+<h3 id="v-show-amp-v-show"><a href="#v-show-amp-v-show" class="headerlink" title="v-show &amp; v-show"></a>v-show &amp; v-show</h3><p><strong>v-show</strong> 的元素始终会被渲染并保留在DOM中，它只是简单地切换CSS的display<br><strong>v-if</strong> 是真正的条件渲染，会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁重建<br>一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。</p>
+<h3 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h3><p>  <strong>v-for</strong>中可以访问所有的父作用域的property</p>
+<h3 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a>v-on</h3><p>  <strong>v-on</strong>可以监听DOM事件（alert、event.preventDefault、鼠标键盘按键），并在触发时运行一些JS代码</p>
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><h4 id="prop"><a href="#prop" class="headerlink" title="prop"></a>prop</h4><p>在组件上注册的一些自定义 attribute  </p>
+<h4 id="在组件上使用v-model"><a href="#在组件上使用v-model" class="headerlink" title="在组件上使用v-model"></a>在组件上使用v-model</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"searchText"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>等价于<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-bind:value</span>=<span class="string">"searchText"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:input</span>=<span class="string">"searchText = $event.target.value"</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="v-model和v-bind区别"><a href="#v-model和v-bind区别" class="headerlink" title="v-model和v-bind区别"></a>v-model和v-bind区别</h3><p><strong>v-bind</strong>,<code>v-bind:class</code>可简写为<code>:class</code>，单向绑定，一般对HTML中的属性、css的样式、对象、数组、number类型、bool类型绑定<br><strong>v-model</strong>,双向绑定，主要用在表单中</p>
+<h3 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h3><p>插槽就是子组件中的提供给父组件使用的一个占位符，用<code>&lt;slot&gt;&lt;/slot&gt;</code> 表示，父组件可以在这个占位符中填充任何模板代码，如 HTML、组件等，填充的内容会替换子组件的<code>&lt;slot&gt;&lt;/slot&gt;</code>标签。<br>插槽 prop 允许我们将插槽转换为可复用的模板，这些模板可以基于输入的 prop 渲染出不同的内容。<code>这在设计封装数据逻辑同时允许父级组件自定义部分布局的可复用组件时是最有用的。</code><br><a href="https://www.cnblogs.com/mandy-dyf/p/11528505.html" target="_blank" rel="noopener">插槽的理解和使用</a></p>
+<h3 id="ref-访问子组件实例或子元素"><a href="#ref-访问子组件实例或子元素" class="headerlink" title="ref 访问子组件实例或子元素"></a>ref 访问子组件实例或子元素</h3><p>尽管存在 prop 和事件，有的时候你仍可能需要在 JavaScript 里直接访问一个子组件。为了达到这个目的，你可以通过 <strong>ref</strong> 这个 attribute 为子组件赋予一个 ID 引用。例如：</p>
+<pre><code class="javascript">&lt;base-input ref=<span class="string">"usernameInput"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">base-input</span>&gt;</span></span>
+</code></pre>
+<p><code>this.$refs.usernameInput</code><br>\$refs 只会在组件渲染完成之后生效，并且它们不是响应式的。这仅作为一个用于直接操作子组件的“逃生舱”——你应该避免在模板或计算属性中访问 $refs。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/VUE/" rel="tag"># VUE</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/11/JS常用设计模式/" rel="next" title="JS常用设计模式">
+                <i class="fa fa-chevron-left"></i> JS常用设计模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/portrait1.jpg" alt="暂时不在">
+            
+              <p class="site-author-name" itemprop="name">暂时不在</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/JuneLikesYogurt" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算属性-amp-方法"><span class="nav-number">1.</span> <span class="nav-text">计算属性 &amp; 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算属性-amp-侦听属性"><span class="nav-number">2.</span> <span class="nav-text">计算属性 &amp; 侦听属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-show-amp-v-show"><span class="nav-number">3.</span> <span class="nav-text">v-show &amp; v-show</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-for"><span class="nav-number">4.</span> <span class="nav-text">v-for</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-on"><span class="nav-number">5.</span> <span class="nav-text">v-on</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件"><span class="nav-number">6.</span> <span class="nav-text">组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prop"><span class="nav-number">6.1.</span> <span class="nav-text">prop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在组件上使用v-model"><span class="nav-number">6.2.</span> <span class="nav-text">在组件上使用v-model</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-model和v-bind区别"><span class="nav-number">7.</span> <span class="nav-text">v-model和v-bind区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插槽"><span class="nav-number">8.</span> <span class="nav-text">插槽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ref-访问子组件实例或子元素"><span class="nav-number">9.</span> <span class="nav-text">ref 访问子组件实例或子元素</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">暂时不在</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+<span id="busuanzi_container_site_uv">
+  本站访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+</span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </footer></div>
+    
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

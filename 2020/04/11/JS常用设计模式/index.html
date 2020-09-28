@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端刷题,面试,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="工厂模式工厂模式类似于现实生活中的工厂可以产生大量相似的商品，去做同样的事情，实现同样的效果;这时候需要使用工厂模式。  优点：能解决多个相似的问题。 缺点：不能知道对象识别的问题(对象的类型)。  12345678910111213function createPerson_Factory(name, age, job) &amp;#123;    var o = new Object();    o.">
+<meta name="keywords" content="前端刷题,面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS常用设计模式">
+<meta property="og:url" content="http://yoursite.com/2020/04/11/JS常用设计模式/index.html">
+<meta property="og:site_name" content="暂时不在的博客">
+<meta property="og:description" content="工厂模式工厂模式类似于现实生活中的工厂可以产生大量相似的商品，去做同样的事情，实现同样的效果;这时候需要使用工厂模式。  优点：能解决多个相似的问题。 缺点：不能知道对象识别的问题(对象的类型)。  12345678910111213function createPerson_Factory(name, age, job) &amp;#123;    var o = new Object();    o.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-11T09:05:35.210Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS常用设计模式">
+<meta name="twitter:description" content="工厂模式工厂模式类似于现实生活中的工厂可以产生大量相似的商品，去做同样的事情，实现同样的效果;这时候需要使用工厂模式。  优点：能解决多个相似的问题。 缺点：不能知道对象识别的问题(对象的类型)。  12345678910111213function createPerson_Factory(name, age, job) &amp;#123;    var o = new Object();    o.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/11/JS常用设计模式/">
+
+
+
+
+
+  <title>JS常用设计模式 | 暂时不在的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">暂时不在的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/11/JS常用设计模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="暂时不在">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/portrait1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="暂时不在的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS常用设计模式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-11T15:41:54+08:00">
+                2020-04-11
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-11T17:05:35+08:00">
+                2020-04-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h1><pre><code>工厂模式类似于现实生活中的工厂可以产生大量相似的商品，去做同样的事情，实现同样的效果;这时候需要使用工厂模式。
+</code></pre><ul>
+<li>优点：能解决多个相似的问题。</li>
+<li>缺点：不能知道对象识别的问题(对象的类型)。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson_Factory</span>(<span class="params">name, age, job</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    o.name = name;</span><br><span class="line">    o.age = age;</span><br><span class="line">    o.job = job;</span><br><span class="line">    o.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person1 = createPerson_Factory(<span class="string">"Ann"</span>,<span class="number">19</span>,<span class="string">"Doctor"</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p>确保只有一个实例，并提供全局访问。在JS开发中，经常把用一个对象包裹,这样减少了全局变量的污染，比如 var a = {}。  </p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>可以用来划分命名空间，减少全局变量的数量</li>
+<li>使用单体模式可以使代码组织的更为一致，使代码容易阅读和维护</li>
+<li>可以被实例化，且实例化一次</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实例对象总是在我们调用方法时才被创建，而不是在页面加载好的时候就创建。  </span></span><br><span class="line"><span class="comment">// 这样就不会每次点击按钮，都会创建一个 div 了</span></span><br><span class="line"><span class="keyword">var</span> createLayer2 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> div;</span><br><span class="line"><span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (!div) &#123;</span><br><span class="line">     <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">     div.innerHTML = <span class="string">'我是内容'</span>;</span><br><span class="line">     div.style.display = <span class="string">'none'</span>;</span><br><span class="line">     <span class="built_in">document</span>.body.appendChild(div);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> div;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'#btn'</span>).onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="keyword">var</span> layer2 = createLayer2();</span><br><span class="line">   layer2.style.display = <span class="string">'block'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实现单体模式弹窗</span></span><br><span class="line"><span class="keyword">var</span> createWindow = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> div;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!div) &#123;</span><br><span class="line">            div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">            div.innerHTML = <span class="string">"我是弹窗内容"</span>;</span><br><span class="line">            div.style.display = <span class="string">'none'</span>;</span><br><span class="line">            <span class="built_in">document</span>.body.appendChild(div);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> div;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"Id"</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 点击后先创建一个div元素</span></span><br><span class="line">    <span class="keyword">var</span> win = createWindow();</span><br><span class="line">    win.style.display = <span class="string">"block"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="模块模式"><a href="#模块模式" class="headerlink" title="模块模式"></a>模块模式</h1><pre><code>如果我们必须创建一个对象并以某些数据进行初始化，同时还要公开一些能够访问这些私有数据的方法，那么我们这个时候就可以使用模块模式了。
+(思路:为单体模式添加私有变量和私有方法能够减少全局变量的使用)
+</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> singleMode = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 创建私有变量</span></span><br><span class="line">    <span class="keyword">var</span> privateNum = <span class="number">112</span>;</span><br><span class="line">    <span class="comment">// 创建私有函数</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">privateFunc</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">// 实现自己的业务逻辑代码</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回一个对象包含公有方法和属性</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        publicMethod1: publicMethod1,</span><br><span class="line">        publicMethod2: publicMethod1</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h1 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h1><h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>代理对象可以代替本体被实例化，并使其可以被远程访问</li>
+<li>它还可以把本体实例化推迟到真正需要的时候；对于实例化比较费时的本体对象，或者因为尺寸比较大以至于不用时不适于保存在内存中的本体，我们可以<strong>推迟实例化</strong>该对象</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 先申明一个奶茶妹对象</span></span><br><span class="line"><span class="keyword">var</span> TeaAndMilkGirl = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 这是京东ceo先生</span></span><br><span class="line"><span class="keyword">var</span> Ceo = <span class="function"><span class="keyword">function</span>(<span class="params">girl</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.girl = girl;</span><br><span class="line">    <span class="comment">// 送结婚礼物 给奶茶妹</span></span><br><span class="line">    <span class="keyword">this</span>.sendMarriageRing = <span class="function"><span class="keyword">function</span>(<span class="params">ring</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Hi "</span> + <span class="keyword">this</span>.girl.name + <span class="string">", ceo送你一个礼物："</span> + ring);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 京东ceo的经纪人是代理，来代替送</span></span><br><span class="line"><span class="keyword">var</span> ProxyObj = <span class="function"><span class="keyword">function</span>(<span class="params">girl</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.girl = girl;</span><br><span class="line">    <span class="comment">// 经纪人代理送礼物给奶茶妹</span></span><br><span class="line">    <span class="keyword">this</span>.sendGift = <span class="function"><span class="keyword">function</span>(<span class="params">gift</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 代理模式负责本体对象实例化</span></span><br><span class="line">        (<span class="keyword">new</span> Ceo(<span class="keyword">this</span>.girl)).sendMarriageRing(gift);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 初始化</span></span><br><span class="line"><span class="keyword">var</span> proxy = <span class="keyword">new</span> ProxyObj(<span class="keyword">new</span> TeaAndMilkGirl(<span class="string">"奶茶妹"</span>));</span><br><span class="line">proxy.sendGift(<span class="string">"结婚戒"</span>); <span class="comment">// Hi 奶茶妹, ceo送你一个礼物：结婚戒</span></span><br></pre></td></tr></table></figure>
+<h3 id="使用虚拟代理实现图片的预加载"><a href="#使用虚拟代理实现图片的预加载" class="headerlink" title="使用虚拟代理实现图片的预加载"></a>使用虚拟代理实现图片的预加载</h3><h1 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h1><p>便于修改<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 普通模式</span></span><br><span class="line"><span class="keyword">var</span> awardS = <span class="function"><span class="keyword">function</span> (<span class="params">salary</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> salary * <span class="number">4</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> awardA = <span class="function"><span class="keyword">function</span> (<span class="params">salary</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> salary * <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> awardB = <span class="function"><span class="keyword">function</span> (<span class="params">salary</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> salary * <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> calculateBonus = <span class="function"><span class="keyword">function</span> (<span class="params">level, salary</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (level === <span class="string">'S'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> awardS(salary);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (level === <span class="string">'A'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> awardA(salary);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (level === <span class="string">'B'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> awardB(salary);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">calculateBonus(<span class="string">'A'</span>, <span class="number">10000</span>);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> strategies = &#123;</span><br><span class="line">  <span class="string">'S'</span>: <span class="function"><span class="keyword">function</span> (<span class="params">salary</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> salary * <span class="number">4</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">'A'</span>: <span class="function"><span class="keyword">function</span> (<span class="params">salary</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> salary * <span class="number">3</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">'B'</span>: <span class="function"><span class="keyword">function</span> (<span class="params">salary</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> salary * <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> calculateBonus = <span class="function"><span class="keyword">function</span> (<span class="params">level, salary</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> strategies[level](salary);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">calculateBonus(<span class="string">'A'</span>, <span class="number">10000</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="职责链模式"><a href="#职责链模式" class="headerlink" title="职责链模式"></a>职责链模式</h1><h3 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h3><p>消除请求的发送者与接收者之间的耦合。  </p>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><ol>
+<li>发送者知道链中的第一个接收者，它向这个接收者发送该请求。</li>
+<li>每一个接收者都对请求进行分析，然后要么处理它，要么它往下传递。</li>
+<li>每一个接收者知道其他的对象只有一个，即它在链中的下家(successor)。</li>
+<li>如果没有任何接收者处理请求，那么请求会从链中离开。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我们一般写代码如下处理操作</span></span><br><span class="line"><span class="keyword">var</span> order =  <span class="function"><span class="keyword">function</span>(<span class="params">orderType,isPay,count</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(orderType == <span class="number">1</span>) &#123;  <span class="comment">// 用户充值500元到支付宝去</span></span><br><span class="line">        <span class="keyword">if</span>(isPay == <span class="literal">true</span>) &#123; <span class="comment">// 如果充值成功的话，100%中奖</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"亲爱的用户，您中奖了100元红包了"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 充值失败，就当作普通用户来处理中奖信息</span></span><br><span class="line">            <span class="keyword">if</span>(count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">"亲爱的用户，您已抽到10元优惠卷"</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">"亲爱的用户，请再接再厉哦"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(orderType == <span class="number">2</span>) &#123;  <span class="comment">// 用户充值200元到支付宝去</span></span><br><span class="line">        <span class="keyword">if</span>(isPay == <span class="literal">true</span>) &#123;     <span class="comment">// 如果充值成功的话，100%中奖</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"亲爱的用户，您中奖了20元红包了"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 充值失败，就当作普通用户来处理中奖信息</span></span><br><span class="line">            <span class="keyword">if</span>(count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">"亲爱的用户，您已抽到10元优惠卷"</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">"亲爱的用户，请再接再厉哦"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(orderType == <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="comment">// 普通用户来处理中奖信息</span></span><br><span class="line">        <span class="keyword">if</span>(count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"亲爱的用户，您已抽到10元优惠卷"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"亲爱的用户，请再接再厉哦"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//职责链</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">order500</span>(<span class="params">orderType,isPay,count</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(orderType == <span class="number">1</span> &amp;&amp; isPay == <span class="literal">true</span>)    &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"亲爱的用户，您中奖了100元红包了"</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//我不知道下一个节点是谁,反正把请求往后面传递</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"nextSuccessor"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">order200</span>(<span class="params">orderType,isPay,count</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(orderType == <span class="number">2</span> &amp;&amp; isPay == <span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"亲爱的用户，您中奖了20元红包了"</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//我不知道下一个节点是谁,反正把请求往后面传递</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"nextSuccessor"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">orderNormal</span>(<span class="params">orderType,isPay,count</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 普通用户来处理中奖信息</span></span><br><span class="line">    <span class="keyword">if</span>(count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"亲爱的用户，您已抽到10元优惠卷"</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"亲爱的用户，请再接再厉哦"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 下面需要编写职责链模式的封装构造函数方法</span></span><br><span class="line"><span class="keyword">var</span> Chain = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.fn = fn;</span><br><span class="line">    <span class="keyword">this</span>.successor = <span class="literal">null</span>;</span><br><span class="line">&#125;;</span><br><span class="line">Chain.prototype.setNextSuccessor = <span class="function"><span class="keyword">function</span>(<span class="params">successor</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.successor = successor;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 把请求往下传递</span></span><br><span class="line">Chain.prototype.passRequest = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> ret = <span class="keyword">this</span>.fn.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">if</span>(ret === <span class="string">'nextSuccessor'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.successor &amp;&amp; <span class="keyword">this</span>.successor.passRequest.apply(<span class="keyword">this</span>.successor,<span class="built_in">arguments</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//现在我们把3个函数分别包装成职责链节点：</span></span><br><span class="line"><span class="keyword">var</span> chainOrder500 = <span class="keyword">new</span> Chain(order500);</span><br><span class="line"><span class="keyword">var</span> chainOrder200 = <span class="keyword">new</span> Chain(order200);</span><br><span class="line"><span class="keyword">var</span> chainOrderNormal = <span class="keyword">new</span> Chain(orderNormal);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 然后指定节点在职责链中的顺序</span></span><br><span class="line">chainOrder500.setNextSuccessor(chainOrder200);</span><br><span class="line">chainOrder200.setNextSuccessor(chainOrderNormal);</span><br><span class="line"></span><br><span class="line"><span class="comment">//最后把请求传递给第一个节点：</span></span><br><span class="line">chainOrder500.passRequest(<span class="number">1</span>,<span class="literal">true</span>,<span class="number">500</span>);  <span class="comment">// 亲爱的用户，您中奖了100元红包了</span></span><br><span class="line">chainOrder500.passRequest(<span class="number">2</span>,<span class="literal">true</span>,<span class="number">500</span>);  <span class="comment">// 亲爱的用户，您中奖了20元红包了</span></span><br><span class="line">chainOrder500.passRequest(<span class="number">3</span>,<span class="literal">true</span>,<span class="number">500</span>);  <span class="comment">// 亲爱的用户，您已抽到10元优惠卷 </span></span><br><span class="line">chainOrder500.passRequest(<span class="number">1</span>,<span class="literal">false</span>,<span class="number">0</span>);   <span class="comment">// 亲爱的用户，请再接再厉哦</span></span><br></pre></td></tr></table></figure>
+<h3 id="异步职责链"><a href="#异步职责链" class="headerlink" title="异步职责链"></a>异步职责链</h3><h1 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://blog.csdn.net/zm06201118/article/details/102638474?depth_1-utm_source=distribute.pc_relevant.none-task-blog-OPENSEARCH-4&amp;utm_source=distribute.pc_relevant.none-task-blog-OPENSEARCH-4" target="_blank" rel="noopener">Javascript十大常用设计模式</a><br><a href="https://www.cnblogs.com/tugenhua0707/p/5198407.html" target="_blank" rel="noopener">Javascript设计模式详解</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端刷题/" rel="tag"># 前端刷题</a>
+          
+            <a href="/tags/面试/" rel="tag"># 面试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/14/CORS跨域资源共享/" rel="next" title="CORS跨域资源共享">
+                <i class="fa fa-chevron-left"></i> CORS跨域资源共享
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/17/VUE学习整理/" rel="prev" title="VUE学习整理">
+                VUE学习整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/portrait1.jpg" alt="暂时不在">
+            
+              <p class="site-author-name" itemprop="name">暂时不在</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/JuneLikesYogurt" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#工厂模式"><span class="nav-number">1.</span> <span class="nav-text">工厂模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单例模式"><span class="nav-number">2.</span> <span class="nav-text">单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">2.0.1.</span> <span class="nav-text">优点</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#模块模式"><span class="nav-number">3.</span> <span class="nav-text">模块模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代理模式"><span class="nav-number">4.</span> <span class="nav-text">代理模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点-1"><span class="nav-number">4.0.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用虚拟代理实现图片的预加载"><span class="nav-number">4.0.2.</span> <span class="nav-text">使用虚拟代理实现图片的预加载</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#策略模式"><span class="nav-number">5.</span> <span class="nav-text">策略模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#职责链模式"><span class="nav-number">6.</span> <span class="nav-text">职责链模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点-2"><span class="nav-number">6.0.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程"><span class="nav-number">6.0.2.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步职责链"><span class="nav-number">6.0.3.</span> <span class="nav-text">异步职责链</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令模式"><span class="nav-number">7.</span> <span class="nav-text">命令模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">暂时不在</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+<span id="busuanzi_container_site_uv">
+  本站访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+</span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </footer></div>
+    
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
