@@ -3,7 +3,6 @@ title: C语言 Notes
 date: 2019-05-03 09:29:54
 tags:
     - C
-    - 笔记
 categories:
     - Notes
 ---

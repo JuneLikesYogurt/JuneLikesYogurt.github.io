@@ -3,7 +3,7 @@ title: 【C】PTA习题03-树3 Tree Traversals Again
 date: 2019-04-24 08:23:25
 tags:
     - PAT
-    - C++
+    - C
     - 树
 categories:
     - DataStructure

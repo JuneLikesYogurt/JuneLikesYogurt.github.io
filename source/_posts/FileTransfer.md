@@ -2,6 +2,9 @@
 title: 【C】 PTA习题 05-树8 File Transfer
 date: 2019-05-04 16:22:07
 tags:
+    - PAT
+    - C
+    - 树
 categories:
     - DataStructure
 ---
