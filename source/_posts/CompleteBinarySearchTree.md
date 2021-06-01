@@ -6,7 +6,7 @@ tags:
     - C
     - 树
 categories:
-    - DataStructure
+    - 刷题
 ---
 中序的完全二叉树层序遍历输出
 https://pintia.cn/problem-sets/1077214780527620096/problems/1108407010212667394

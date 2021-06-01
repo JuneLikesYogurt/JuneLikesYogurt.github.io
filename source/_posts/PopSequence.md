@@ -6,7 +6,7 @@ tags:
     - C
     - 栈
 categories:
-    - DataStructure
+    - 刷题
 ---
 输入几串随机数列，来比较判断当前出栈是否合理  
 https://pintia.cn/problem-sets/1077214780527620096/problems/1103507412634030083

@@ -6,7 +6,7 @@ tags:
     - C
     - 树
 categories:
-    - DataStructure
+    - 刷题
 ---
 根据输入时的前序、中序的顺序，后序输出树  
 https://pintia.cn/problem-sets/1077214780527620096/problems/1106167947099181058

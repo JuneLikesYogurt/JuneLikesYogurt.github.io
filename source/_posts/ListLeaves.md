@@ -7,7 +7,7 @@ tags:
     - 树
     - 队列
 categories:
-    - DataStructure
+    - 刷题
 ---
 
 层次遍历，依次输出树的叶子结点  

@@ -2,7 +2,7 @@
 title: CORS跨域资源共享
 date: 2020-03-14 11:47:03
 tags:
-    - 前端刷题
+    - Network
     - 面试
 categories:
     - Notes

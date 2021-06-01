@@ -2,7 +2,7 @@
 title: XSS、CSRF
 date: 2020-02-28 13:30:47
 tags:
-    - 前端刷题
+    - Network
 categories:
     - Notes
 ---

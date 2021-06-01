@@ -6,7 +6,7 @@ tags:
     - C
     - 树
 categories:
-    - DataStructure
+    - 刷题
 ---
 关于并查集的操作，以及并查集算法的优化，按秩归并和路径压缩。  
 https://pintia.cn/problem-sets/1077214780527620096/problems/1111280682067111937

@@ -2,7 +2,7 @@
 title: JS常用设计模式
 date: 2020-04-11 15:41:54
 tags:
-    - 前端刷题
+    - Javascript
     - 面试
 categories:
     - Notes

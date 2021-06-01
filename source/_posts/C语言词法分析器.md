@@ -5,7 +5,7 @@ tags:
     - C
     - 编译原理
 categories:
-    - 专业课作业
+    - campus
 ---
 # 实验一  简单的C语言词法分析器的实现
 

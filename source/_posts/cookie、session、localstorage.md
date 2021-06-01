@@ -2,7 +2,7 @@
 title: cookie、session，tooken、localstorage区别与联系
 date: 2020-02-28 11:16:55
 tags:
-    - 前端刷题
+    - 计网
 categories:
     - Notes
 ---
@@ -16,7 +16,7 @@ categories:
 ## 客户端访问服务器的流程如下：
 1. 客户端会发送一个http请求到服务器端
 2. 服务器端接受客户端请求后，建立一个session，并发送一个http响应到客户端，这个响应头，其中就包含**Set-Cookie**头部。**该头部包含了sessionId。**
-3. 在客户端发起的第二次请求，假如服务器给了set-Cookie，浏览器会自动在请求头中添加cookie
+3. 在客户端发起的第二次请求，假如服务器给了set-Cookie，浏览器会自动**在请求头(cookie)中添加sessionId**<!-- 3. 在客户端发起的第二次请求，假如服务器给了set-Cookie，浏览器会自动在请求头中添加cookie -->
 4. 服务器接收请求，分解cookie，验证信息，核对成功后返回response给客户端  
 <br>
 ![](cookie、session、localstorage/cookie.png)
@@ -29,33 +29,49 @@ categories:
 5. session不能区分路径，同一个用户在访问一个网站期间，所有的session在任何一个地方都可以访问到，而cookie中如果设置了路径参数，那么同一个网站中不同路径下的cookie互相是访问不到的。 
 6. **Cookie支持跨域名访问**，例如将domain属性设置为“.biaodianfu.com”，则以“.biaodianfu.com”为后缀的一切域名均能够访问该Cookie。跨域名Cookie如今被普遍用在网络中，例如Google、Baidu、Sina等,而**Session则不会支持跨域名访问**。Session仅在他所在的域名内有效。
 
+----
 
 # token
-token 也称作令牌，由uid+time+sign[+固定参数]  
-token 的认证方式类似于临时的证书签名, 并且是一种服务端无状态的认证方式, 非常适合于 REST API 的场景.（无状态就是服务端并不会保存身份认证相关的数据）
+<!-- token 也称作令牌，由uid+time+sign[+固定参数]   -->
+token 的认证方式类似于临时的证书签名, 并且是一种服务端**无状态**（服务端并不会保存身份认证相关的数据）的认证方式, 非常适合于 REST API 的场景。  
+简单来说，一个真正的 token 本身是携带了一些信息的，比如用户 id、过期时间等，这些信息通过**签名算法**防止伪造，也可以使用加密算法进一步提高安全性，但一般没有人会在 token 里存储密码，所以不加密也无所谓，反正被截获了结果都一样。（一般会用 base64 编个码，方便传输）
 
-## 组成
+<!-- ## 组成
 + uid: 用户唯一身份标识
 + time: 当前时间的时间戳
 + sign: 签名, 使用 hash/encrypt 压缩成定长的十六进制字符串，以防止第三方恶意拼接
-+ 固定参数(可选): 将一些常用的固定参数加入到 token 中是为了避免重复查库
++ 固定参数(可选): 将一些常用的固定参数加入到 token 中是为了避免重复查库 -->
 
-## 存放
+<!-- ## 存放
 在客户端一般存放于localStorage，cookie，或sessionStorage中。  
-在服务器一般存于数据库中
+在服务器一般存于数据库中 -->
 
 ## token认证流程
-与cookie相似
+    与cookie相似
 1. 用户登录，成功后服务器返回Token给客户端。
 2. 客户端收到数据后保存在客户端
 3. 客户端再次访问服务器，将token放入**headers**中
 4. 服务器端采用filter过滤器校验。校验成功则返回请求数据，校验失败则返回错误码
 
+## 优势  
+**无需服务器存储！！！**
+**无需服务器存储！！！**
+**无需服务器存储！！！**
 
+---
 
-# sessionStorage、localstorage
-localStorage 生命周期是永久，除非主动清除localStorage信息，否则这些信息将永远存在。存放数据大小为一般为5MB,而且它仅在客户端（即浏览器）中保存，不参与和服务器的通信。  
-sessionStorage 仅在当前会话下有效，关闭页面或浏览器后被清除。存放数据大小为一般为5MB,而且它仅在客户端（即浏览器）中保存，不参与和服务器的通信。
+<!-- # sessionStorage、localstorage -->
+# 客户端存储方案 （cookie、localStorage、sessionStorage）
++ localStorage，生命周期是**永久**，除非主动清除localStorage信息，否则这些信息将永远存在。存放数据大小为一般为5MB,而且它仅在客户端（即浏览器）中保存，不参与和服务器的通信。  
++ sessionStorage，**仅在当前会话下有效**，关闭页面或浏览器后被清除。存放数据大小为一般为5MB,而且它仅在客户端（即浏览器）中保存，不参与和服务器的通信。
++ cookie，可以作为**传递的参数**，并可通过后端进行控制，local/session Storage 则主要用于在客户端中**保存**数据，其传输需要借助 cookie 或其它方式完成
+
+## 三种方案的对比
+| 特性     | Cookie                                                                             | localStorage                                       | sessionStorage                               |
+| -------- | ---------------------------------------------------------------------------------- | -------------------------------------------------- | -------------------------------------------- |
+| 生命周期 | 一般由服务器生成，可设置失效时间。如果在浏览器端生成cookie，默认是关闭浏览器后失效 | 除非被清除，否则永久保存                           | 仅在当前会话下有效，关闭页面或浏览器后被清除 |
+| 数据大小 | 4K左右                                                                             | 一般为5MB                                          | 一般为5MB                                    |
+| 通信方式 | 每次都会携带在HTTP头中，如果使用cookie保存过多数据会带来性能问题                   | 仅在客户端（即浏览器）中保存，不参与和服务器的通信 | 同 localStorage                              |
 
 ## 复杂数据存储
 上面都是对于简单的数据类型的存储，但当要存储的数据是一个对象或是数组的时候，直接存储是不行的。  
@@ -69,3 +85,4 @@ sessionStorage 仅在当前会话下有效，关闭页面或浏览器后被清�
 [彻底弄懂session，cookie，token](https://segmentfault.com/a/1190000017831088?utm_source=tag-newest)  
 [Cookie、session和localStorage、以及sessionStorage之间的区别](https://www.cnblogs.com/jing-tian/p/10991431.html)  
 [HTML5 Web 存储（localStorage和sessionStorage）](https://blog.csdn.net/sleepwalker_1992/article/details/82832123?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task)
+[Vue + Spring Boot 项目实战（十四）：用户认证方案与完善的访问拦截](https://learner.blog.csdn.net/article/details/102788866)

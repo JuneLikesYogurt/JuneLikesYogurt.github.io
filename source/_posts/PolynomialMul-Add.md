@@ -6,7 +6,7 @@ tags:
     - C
     - 链表
 categories: 
-    - DataStructure
+    - 刷题
 ---
 
 设计函数分别求两个一元多项式的乘积与和  

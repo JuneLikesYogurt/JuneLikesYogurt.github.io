@@ -6,7 +6,7 @@ tags:
     - 链表
     - C
 categories: 
-    - DataStructure
+    - 刷题
 ---
 
 单链表的部分反转  

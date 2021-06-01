@@ -5,7 +5,7 @@ tags:
     - PAT
     - C
 categories: 
-    - DataStructure
+    - 刷题
 ---
 最大子列和--在线处理算法  
 输出子列和    

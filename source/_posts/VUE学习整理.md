@@ -4,7 +4,7 @@ date: 2020-09-17 10:46:27
 tags:
     - VUE
 categories:
-    - draft
+    - Notes
 ---
 
 ## VUE基础
@@ -57,7 +57,9 @@ https://www.cnblogs.com/jiajialove/p/11327945.html
 
 ### 组件
 #### prop
-在组件上注册的一些自定义 attribute  
+<!-- 在组件上注册的一些自定义 attribute   -->
+prop的作用是父组件向子组件单向传递数据，这个过程是单向的。
+传递的属性可以是静态的，可以是动态的，可以是数字，可以是字符串，可以是数组，还可以是对象，甚至可以在传递数据的时候写一个校验函数进行校验。
 #### 在组件上使用v-model
 ```HTML
 <input v-model="searchText">
