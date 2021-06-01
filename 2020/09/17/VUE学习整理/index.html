@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="暂时不在的博客">
 <meta property="og:description" content="VUE基础计算属性 &amp;amp; 方法计算属性是基于它们的响应式依赖进行缓存1234&amp;lt;div id=&quot;example&quot;&amp;gt;  &amp;lt;p&amp;gt;Original message: &quot;&amp;#123;&amp;#123; message &amp;#125;&amp;#125;&quot;&amp;lt;/p&amp;gt;  &amp;lt;p&amp;gt;Computed reversed message: &quot;&amp;#123;&amp;#123; reversedM">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-09-30T08:25:36.234Z">
+<meta property="og:updated_time" content="2021-06-01T03:10:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VUE学习整理">
 <meta name="twitter:description" content="VUE基础计算属性 &amp;amp; 方法计算属性是基于它们的响应式依赖进行缓存1234&amp;lt;div id=&quot;example&quot;&amp;gt;  &amp;lt;p&amp;gt;Original message: &quot;&amp;#123;&amp;#123; message &amp;#125;&amp;#125;&quot;&amp;lt;/p&amp;gt;  &amp;lt;p&amp;gt;Computed reversed message: &quot;&amp;#123;&amp;#123; reversedM">
@@ -298,8 +298,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-09-30T16:25:36+08:00">
-                2020-09-30
+              <time title="更新于" itemprop="dateModified" datetime="2021-06-01T11:10:54+08:00">
+                2021-06-01
               </time>
             
           </span>
@@ -317,8 +317,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/draft/" itemprop="url" rel="index">
-                    <span itemprop="name">draft</span>
+                  <a href="/categories/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
                   </a>
                 </span>
 
@@ -365,7 +365,8 @@
 <h3 id="v-show-amp-v-show"><a href="#v-show-amp-v-show" class="headerlink" title="v-show &amp; v-show"></a>v-show &amp; v-show</h3><p><strong>v-show</strong> 的元素始终会被渲染并保留在DOM中，它只是简单地切换CSS的display<br><strong>v-if</strong> 是真正的条件渲染，会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁重建<br>一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。</p>
 <h3 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h3><p>  <strong>v-for</strong>中可以访问所有的父作用域的property</p>
 <h3 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a>v-on</h3><p>  <strong>v-on</strong>可以监听DOM事件（alert、event.preventDefault、鼠标键盘按键），并在触发时运行一些JS代码</p>
-<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><h4 id="prop"><a href="#prop" class="headerlink" title="prop"></a>prop</h4><p>在组件上注册的一些自定义 attribute  </p>
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><h4 id="prop"><a href="#prop" class="headerlink" title="prop"></a>prop</h4><!-- 在组件上注册的一些自定义 attribute   -->
+<p>prop的作用是父组件向子组件单向传递数据，这个过程是单向的。<br>传递的属性可以是静态的，可以是动态的，可以是数字，可以是字符串，可以是数组，还可以是对象，甚至可以在传递数据的时候写一个校验函数进行校验。</p>
 <h4 id="在组件上使用v-model"><a href="#在组件上使用v-model" class="headerlink" title="在组件上使用v-model"></a>在组件上使用v-model</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"searchText"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>等价于<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-bind:value</span>=<span class="string">"searchText"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:input</span>=<span class="string">"searchText = $event.target.value"</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="v-model和v-bind区别"><a href="#v-model和v-bind区别" class="headerlink" title="v-model和v-bind区别"></a>v-model和v-bind区别</h3><p><strong>v-bind</strong>,<code>v-bind:class</code>可简写为<code>:class</code>，单向绑定，一般对HTML中的属性、css的样式、对象、数组、number类型、bool类型绑定<br><strong>v-model</strong>,双向绑定，主要用在表单中</p>
@@ -441,6 +442,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/10/09/springBoot入门学习整理/" rel="prev" title="springBoot入门学习整理">
+                springBoot入门学习整理 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -521,7 +526,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -532,7 +537,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -543,7 +548,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -606,7 +611,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
